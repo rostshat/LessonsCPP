@@ -9,6 +9,7 @@ float volumeOfCylinder(float radius, float height);
 long maxOfThreeNums(long firstNum, long secondNum, long thirdNum);
 double dohod(double deposit, double percent, int days);
 double glasn(char symbol);
+void symbolLine(int length, char symbol);
 
 int main()
 {
@@ -23,8 +24,8 @@ int main()
 		cout << "2 - Max of 3 numbers \n";
 		cout << "3 - Deposit calculator\n";
 		cout << "4 - Glasn\n";
-		cout << "4 - Calculator\n";
-		cout << "6 - MaxNum x%3 == 0\n"; //Корректно назвать
+		cout << "5 - Symbol Line\n";
+		cout << "6 - Transist line\n"; //Корректно назвать
 		cout << "0 - Exit\n";
 
 		cin >> taskNum;
@@ -87,10 +88,23 @@ int main()
 
 				cout << "Result: " << glasn(userSymbol) << endl;
 			}break;
+			case '5':
+			{
+				int length;
+				char userSymbol;
+
+				cout << "Enter your line length: ";
+				cin >> length;
+				cout << "Enter your symbol: ";
+				cin >> userSymbol;
+
+				symbolLine(length, userSymbol);
+			}break;
 			default:
 			{
 
 			}break;
+
 		}
 		system("pause");
 	}
@@ -121,9 +135,17 @@ double dohod(double deposit, double percent, int days)
 
 	return deposit;
 }
-
 double glasn(char symbol)
 {
 	if (symbol == 'a' || symbol == 'e' || symbol == 'i' || symbol == 'o' || symbol == 'u') return 1;
 	return 0;
+}
+void symbolLine(int length, char symbol)
+{
+
+
+	for (int i = 0; i < length / 2; i++)
+	{
+		cout << symbol << '$';
+	}
 }
