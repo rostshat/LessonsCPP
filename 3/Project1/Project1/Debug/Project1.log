@@ -1,0 +1,4 @@
+﻿  Source.cpp
+R:\ItStep\C++\3\Project1\Project1\Source.cpp(7,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+R:\ItStep\C++\3\Project1\Project1\Source.cpp(8,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Project1.vcxproj -> R:\ItStep\C++\3\Project1\Debug\Project1.exe

@@ -1,0 +1,9 @@
+﻿  ConsoleApplication1.cpp
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(7,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(93,3): error C2046: illegal case
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(104,3): error C2046: illegal case
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(117,3): error C2047: illegal default
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(124,7): error C2143: syntax error: missing ';' before '<<'
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(124,7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(125,1): error C2059: syntax error: '}'
+R:\ItStep\C++\3\Homework\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.cpp(125,1): error C2143: syntax error: missing ';' before '}'
