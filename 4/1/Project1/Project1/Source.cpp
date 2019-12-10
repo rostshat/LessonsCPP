@@ -25,7 +25,7 @@ int main()
 		cout << "3 - Deposit calculator\n";
 		cout << "4 - Glasn\n";
 		cout << "5 - Symbol Line\n";
-		cout << "6 - Transist line\n"; //Êîğğåêòíî íàçâàòü
+		cout << "6 - Transist line\n"; //ÃŠÃ®Ã°Ã°Ã¥ÃªÃ²Ã­Ã® Ã­Ã Ã§Ã¢Ã Ã²Ã¼
 		cout << "0 - Exit\n";
 
 		cin >> taskNum;
