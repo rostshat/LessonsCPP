@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 
 using namespace std;
 
@@ -10,8 +9,10 @@ long maxOfThreeNums(long firstNum, long secondNum, long thirdNum);
 double dohod(double deposit, double percent, int days);
 double glasn(char symbol);
 void symbolLine(int length, char symbol);
+double resistanceOfLine(double firstResistor, double secondResistor, char type);
 
-int main()
+
+int main() //≈сли что-то не так, просто бросьте на доработку, потому что 5 задание € не полностью пон€л
 {
 	srand(time(NULL));
 	char taskNum{};
@@ -100,6 +101,21 @@ int main()
 
 				symbolLine(length, userSymbol);
 			}break;
+			case '6':
+			{
+				char type;
+				double firstResistor, secondResistor;
+
+				cout << "Enter type of connection (0 - consistent; 1 - parallel): ";
+				cin >> type;
+				cout << "Enter resistance in 1st Resistor: ";
+				cin >> firstResistor;
+				cout << "Enter resistance in 2nd Resistor: ";
+				cin >> secondResistor;
+
+				cout << "R: " << resistanceOfLine(firstResistor, secondResistor, type) << endl;
+			}break;
+
 			default:
 			{
 
@@ -137,7 +153,7 @@ double dohod(double deposit, double percent, int days)
 }
 double glasn(char symbol)
 {
-	if (symbol == 'a' || symbol == 'e' || symbol == 'i' || symbol == 'o' || symbol == 'u') return 1;
+	if (symbol == 'a' || symbol == 'e' || symbol == 'i' || symbol == 'o' || symbol == 'u' || symbol == 'A' || symbol == 'E' || symbol == 'I' || symbol == 'O' || symbol == 'U') return 1;
 	return 0;
 }
 void symbolLine(int length, char symbol)
@@ -148,4 +164,9 @@ void symbolLine(int length, char symbol)
 	{
 		cout << symbol << '$';
 	}
+}
+double resistanceOfLine(double firstResistor, double secondResistor, char type)
+{
+	if (type != '1' && type != '0') return -1;
+	return (type == '0') ? firstResistor + secondResistor : (firstResistor * secondResistor) / (firstResistor + secondResistor);
 }
