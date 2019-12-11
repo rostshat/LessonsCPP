@@ -26,7 +26,7 @@ int main() //Если что-то не так, просто бросьте на доработку, потому что 5 задан
 		cout << "3 - Deposit calculator\n";
 		cout << "4 - Glasn\n";
 		cout << "5 - Symbol Line\n";
-		cout << "6 - Transist line\n"; //ГЉГ®Г°Г°ГҐГЄГІГ­Г® Г­Г Г§ГўГ ГІГј
+		cout << "6 - Resistor line\n";
 		cout << "0 - Exit\n";
 
 		cin >> taskNum;
@@ -91,8 +91,8 @@ int main() //Если что-то не так, просто бросьте на доработку, потому что 5 задан
 			}break;
 			case '5':
 			{
-				int length;
-				char userSymbol;
+				int length{};
+				char userSymbol{};
 
 				cout << "Enter your line length: ";
 				cin >> length;
@@ -103,8 +103,8 @@ int main() //Если что-то не так, просто бросьте на доработку, потому что 5 задан
 			}break;
 			case '6':
 			{
-				char type;
-				double firstResistor, secondResistor;
+				char type{};
+				double firstResistor{}, secondResistor{};
 
 				cout << "Enter type of connection (0 - consistent; 1 - parallel): ";
 				cin >> type;
@@ -118,7 +118,7 @@ int main() //Если что-то не так, просто бросьте на доработку, потому что 5 задан
 
 			default:
 			{
-
+				cout << "Enter a correct task nubmer\n";
 			}break;
 
 		}
@@ -165,11 +165,9 @@ void symbolLine(int length, char symbol)
 		cout << symbol << '$';
 	}
 }
-<<<<<<< HEAD
+
 double resistanceOfLine(double firstResistor, double secondResistor, char type)
 {
-	if (type != '1' && type != '0') return -1;
-	return (type == '0') ? firstResistor + secondResistor : (firstResistor * secondResistor) / (firstResistor + secondResistor);
+	//if (type != '1' && type != '0') return -1;
+	return (type == '0') ? firstResistor + secondResistor : (type == '1') ? (firstResistor * secondResistor) / (firstResistor + secondResistor) : -1;
 }
-=======
->>>>>>> 4a6261d74c7fca8a8d06ae6c13094c806fbd00bc
