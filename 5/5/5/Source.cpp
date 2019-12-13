@@ -2,6 +2,7 @@
 #include <time.h>
 using namespace std;
 
+
 int main()
 {
 	srand(time(NULL));
@@ -34,7 +35,7 @@ int main()
 
 				for (int i = 0; i < MAXSIZE; i++)
 				{
-					marks[i] = rand() % (MAX_MARK - MIN_MARK + 1) + MIN_MARK;
+					marks[i] = 
 				}
 				
 				for (int i = 1; i <= MAX_MARK; i++)
@@ -49,6 +50,9 @@ int main()
 			}break;
 			case '2':
 			{
+				const int TYPES = 15;
+				int goods[TYPES] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+
 
 			}break;
 			case '3':
@@ -68,4 +72,14 @@ int main()
 	}
 
 	return 0;
+}
+
+int getRandomInt(int min, int max)
+{
+	return rand() % (max - min) + min;
+}
+
+int getRandomInt(int min, int max)
+{
+	return rand() % (max - min) + min;
 }
