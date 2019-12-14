@@ -29,40 +29,48 @@ int main()
 		{
 			case '1':
 			{
-				const int MIN_MARK		= 1;
-				const int MAX_MARK		= 5;
-				const int  MARK = 1;
-
-				int marks[][MARK] = { 0 };
-				int numberOfMarks{};
-
-				cout << "Enter your number of marks: ";
-				cin >> numberOfMarks;
-
-				for (int i = 0; i < numberOfMarks; i++)
-				{
-					for (int j = 0; j < MARK; j++)
-					{
-						marks[i][j] = getRandomIntRB(MIN_MARK, MAX_MARK);
-					}
-				}
-
-				for (int i = 0; i < MAX_MARK; i++)
-				{
-					int temp{};
-					for (int j = 0; j < numberOfMarks; j++)
-					{
-						if (marks[j][MARK] == i) temp++;
-					}
-					cout << i << ' : ' << temp << endl;
-				}
+					
 			}break;
 			case '2':
 			{
-				const int TYPES = 15;
-				int goods[TYPES] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+				const int NUMBER_OF_GOODS = 15;
+				const int MIN_PRICE = 20;
+				const int MAX_PRICE = 120;
+				const int ATTRIBUTES = 1;
 
+				int goods[15][1] = { 0 };
+				int temp{}, average{};
 
+				for (int i = 0; i < NUMBER_OF_GOODS; i++)
+				{
+					for (int j = 0; j < ATTRIBUTES; j++)
+					{
+						goods[i][j] = getRandomIntRB(MIN_PRICE, MAX_PRICE);;
+					}
+				}
+
+				for (int i = 0; i < NUMBER_OF_GOODS; i++)
+				{
+					for (int j = 0; j < ATTRIBUTES; j++)
+					{
+						temp += goods[i][j];
+					}
+				}
+
+				average = temp / NUMBER_OF_GOODS;
+
+				cout << "Avegare: " << average << endl;
+
+				for (int i = 0; i < NUMBER_OF_GOODS; i++)
+				{
+					for (int j = 0; j < ATTRIBUTES; j++)
+					{
+						if (goods[i][j] < average)
+						{
+							cout << i << " : " << goods[i][j] << endl;
+						}
+					}
+				}
 			}break;
 			case '3':
 			{
