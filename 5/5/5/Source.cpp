@@ -2,6 +2,8 @@
 #include <time.h>
 using namespace std;
 
+int getRandomInt(int min = 0, int max = 100);
+int getRandomIntRB(int min = 0, int max = 100);
 
 int main()
 {
@@ -27,25 +29,32 @@ int main()
 		{
 			case '1':
 			{
-				const int MAXSIZE = 20;
-				const int MAX_MARK = 5;
-				const int MIN_MARK = 1;
+				const int MIN_MARK		= 1;
+				const int MAX_MARK		= 5;
+				const int  MARK = 1;
 
-				int marks[MAXSIZE] = {};
+				int marks[][MARK] = { 0 };
+				int numberOfMarks{};
 
-				for (int i = 0; i < MAXSIZE; i++)
+				cout << "Enter your number of marks: ";
+				cin >> numberOfMarks;
+
+				for (int i = 0; i < numberOfMarks; i++)
 				{
-					marks[i] = 
+					for (int j = 0; j < MARK; j++)
+					{
+						marks[i][j] = getRandomIntRB(MIN_MARK, MAX_MARK);
+					}
 				}
-				
-				for (int i = 1; i <= MAX_MARK; i++)
+
+				for (int i = 0; i < MAX_MARK; i++)
 				{
 					int temp{};
-					for (int j = 0; j < MAXSIZE; j++)
+					for (int j = 0; j < numberOfMarks; j++)
 					{
-						if (marks[j] == i) temp++;
+						if (marks[j][MARK] == i) temp++;
 					}
-					cout << i << " : " << temp << endl;
+					cout << i << ' : ' << temp << endl;
 				}
 			}break;
 			case '2':
@@ -79,7 +88,7 @@ int getRandomInt(int min, int max)
 	return rand() % (max - min) + min;
 }
 
-int getRandomInt(int min, int max)
+int getRandomIntRB(int min, int max)
 {
-	return rand() % (max - min) + min;
+	return rand() % (max - min + 1) + min;
 }
