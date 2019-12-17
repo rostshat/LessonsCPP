@@ -1,11 +1,15 @@
 ﻿#include <iostream>
 #include <time.h>
+#include <math.h>
 #include <iomanip>
 using namespace std;
 
 int getRandomInt(int min = 0, int max = 100);
 int getRandomIntRB(int min = 0, int max = 100);
 float getPercentage(int all_percent, int number);
+int primeNumber(int userNum);
+
+const int numberOfStudent = 16;
 
 int main()
 {
@@ -17,11 +21,13 @@ int main()
 		system("cls");
 		cout << "Choise your task: \n";
 		cout << "1 - Student`s marks\n";
-		cout << "2 - 15 goods \n";
-		cout << "3 - Deposit calculator\n";
-		cout << "4 - Glasn\n";
-		cout << "5 - Symbol Line\n";
-		cout << "6 - Transist line\n";
+		cout << "2 - 15 types of goods \n";
+		cout << "3 - 10 types of goods\n";
+		cout << "4 - Drawing\n";
+		cout << "5 - Transposed matrix\n";
+		cout << "6 - Prime numbers\n";
+		cout << "7 - Weather in Kiev\n";
+		cout << "8 - Two matrixs\n";
 		cout << "0 - Exit\n";
 
 		cin >> taskNum;
@@ -153,25 +159,76 @@ int main()
 			}break;
 			case '5':
 			{
-				/*
-					const int ROWS = 10;
-					const int COLS = 10;
+				const int ROWS = 10;
+				const int COLS = 10;
 
-					int array[ROWS][COLS] = { 0 };
+				int array[ROWS][COLS] = { 0 };
+				int arrayT[ROWS][COLS] = { 0 };
 
-					for (int i = 0; i < ROWS; i++)
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
 					{
-						array[i] = getRandomIntRB(-10, 10);
-						for (int j = 0; j < COLS; j++)
-						{
-							array[i][j] = getRandomIntRB(-10, 10);
-						}
+						array[i][j] = getRandomIntRB(-10, 10);
 					}
-				*/
+				}
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						cout << setw(3) << array[i][j] << ' ';
+					}
+					cout << endl;
+				}
+
+				cout << endl;
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						arrayT[j][i] = array[i][j];
+					}
+				}
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						cout << setw(3) << arrayT[i][j] << ' ';
+					}
+					cout << endl;
+				}
 			}break;
 			case '6':
 			{
+				const int ROWS = 5;
+				const int COLS = 8;
+				const int START = 100 * numberOfStudent;
 
+				int array[ROWS][COLS] = { 0 };
+				int temp = START;
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{				
+						while(true)
+						{
+							if (primeNumber(temp))
+							{
+								cout << setw(6) << temp << ' '; //Вывод простого числа
+								temp++; //Счётчик
+								break;
+							}
+							{
+								temp++; //Счётчик
+							}
+						}
+					}
+					cout << endl;
+				}
 			}break;
 			case '7':
 			{
@@ -204,4 +261,11 @@ int getRandomIntRB(int min, int max)
 float getPercentage(int all_percent, int number)
 {
 	return (float)number / (float)all_percent * 100;
+}
+
+int primeNumber(int userNum)
+{
+	for (int i = 2; i <= sqrt(userNum); i++) //Ещё раз разобраться в этом
+		if (userNum % i == 0) return false;
+	return true;
 }
