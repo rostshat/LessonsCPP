@@ -9,6 +9,7 @@ int getRandomIntRB(int min = 0, int max = 100);
 float getPercentage(int all_percent, int number);
 int primeNumber(int userNum);
 int getMax(int array[], int arraySize);
+void getAverageDifferent(double average, int thisHalf);
 
 const int numberOfStudent = 16;
 
@@ -282,7 +283,7 @@ int main()
 
 				int numberOfPrecipitationPerHalf [ARR_SIZE] {};
 				int numberOfPrecipitationPerYear [YEARS][HALFS]{};
-				int average{};
+				double average{};
 
 				for (int i = 0; i < ARR_SIZE; i++)
 				{
@@ -299,6 +300,7 @@ int main()
 					}
 				}
 
+				/*GET AVERAGE*/
 				for (int i = 0; i < YEARS; i++)
 				{
 					for (int j = 0; j < HALFS; j++)
@@ -306,11 +308,26 @@ int main()
 						temp += numberOfPrecipitationPerYear[i][j];
 					}
 				}
-
-				/*GET AVERAGE*/
 				
-				
+				average = (double)temp / ARR_SIZE;
 
+				/*Вывод*/
+				cout << "Average number of precipitation: " << average << endl;
+				cout << " " << setw(25) << "January - June" << setw(25) << "July - December" << setw(15) << "Average" << endl;
+
+				for (int i = 0; i < YEARS; i++)
+				{
+					temp = 0;
+					cout << i + 1;
+					for (int j = 0; j < HALFS; j++)
+					{
+						cout << setw(25) << numberOfPrecipitationPerYear[i][j];
+						getAverageDifferent(average, numberOfPrecipitationPerYear[i][j]);
+
+						temp += numberOfPrecipitationPerYear[i][j];
+					}
+					cout << setw(15) << (double)temp / HALFS << endl;
+				}
 			}break;
 			case '8':
 			{
@@ -415,4 +432,20 @@ int getMax(int array[], int arraySize)
 	}
 	
 	return array[maxIndex];
+}
+
+void getAverageDifferent(double average, int thisHalf)
+{
+	if (thisHalf < average)
+	{
+		cout << "(-" << average - thisHalf << ")";
+	}
+	else if (thisHalf > average)
+	{
+		cout << "(+" << thisHalf - average << ")";
+	}
+	else
+	{
+		cout << "(0)";
+	}
 }
