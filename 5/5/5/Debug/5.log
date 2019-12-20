@@ -1,3 +1,7 @@
 ﻿  Source.cpp
-R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(16,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  5.vcxproj -> R:\ItStep\C++\LessonsCPP\5\5\Debug\5.exe
+R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(285,24): error C2062: type 'int' unexpected
+R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(285,28): error C2143: syntax error: missing ';' before '{'
+R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(296,73): error C2065: 'temp': undeclared identifier
+R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(297,7): error C2065: 'temp': undeclared identifier
+R:\ItStep\C++\LessonsCPP\5\5\5\Source.cpp(305,7): error C2065: 'temp': undeclared identifier

@@ -8,6 +8,7 @@ int getRandomInt(int min = 0, int max = 100);
 int getRandomIntRB(int min = 0, int max = 100);
 float getPercentage(int all_percent, int number);
 int primeNumber(int userNum);
+int getMax(int array[], int arraySize);
 
 const int numberOfStudent = 16;
 
@@ -70,7 +71,7 @@ int main()
 					{
 						if(marks[j][0] == i) temp++;
 					}
-					cout << setw(4) << fixed << setprecision(3) << i << " : " << temp << " : " << getPercentage(numberOfMarks, temp) << '%' << endl;
+					cout << setw(4) << fixed << setprecision(2) << i << " : " << temp << " : " << getPercentage(numberOfMarks, temp) << '%' << endl;
 				}
 			}break;
 			case '2':
@@ -155,6 +156,49 @@ int main()
 			}break;
 			case '4':
 			{
+				const int ROWS = 10;
+				const int COLS = 10;
+
+				int taskNumber = (numberOfStudent + 4) % 10 + 1;
+				int matrix[10][10] = { 0 };
+				int tempCols{0}, tempMax = matrix[0][0];
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						matrix[i][j] = getRandomInt();
+					}
+				}
+
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						cout << setw(3) << matrix[i][j] << ' ';
+					}
+					cout << endl;
+				}
+				cout << endl;
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int k = 0; k < tempCols; k++)
+					{
+						cout << "    ";
+					}
+					for (int j = tempCols; j < COLS; j++)
+					{
+						
+						cout << setw(3) << matrix[i][j] << ' ';
+						if(matrix[i][j] > tempMax) tempMax = matrix[i][j];
+					}
+					cout << endl;
+					tempCols++;
+				}
+
+				cout << endl;
+				cout << "MaxNumber:" << tempMax << endl;
 
 			}break;
 			case '5':
@@ -232,10 +276,102 @@ int main()
 			}break;
 			case '7':
 			{
+				const int YEARS = 10;
+				const int HALFS = 2;
+				const int ARR_SIZE = 10 * 2;
+
+				int numberOfPrecipitationPerHalf [ARR_SIZE] {};
+				int numberOfPrecipitationPerYear [YEARS][HALFS]{};
+				int average{};
+
+				for (int i = 0; i < ARR_SIZE; i++)
+				{
+					numberOfPrecipitationPerHalf[i] = getRandomInt(15, 100);
+				}
+
+				int temp = 0;
+				for (int i = 0; i < YEARS; i++)
+				{
+					for (int j = 0; j < HALFS; j++)
+					{
+						numberOfPrecipitationPerYear[i][j] = numberOfPrecipitationPerHalf[temp];
+						temp++;
+					}
+				}
+
+				for (int i = 0; i < YEARS; i++)
+				{
+					for (int j = 0; j < HALFS; j++)
+					{
+						temp += numberOfPrecipitationPerYear[i][j];
+					}
+				}
+
+				/*GET AVERAGE*/
+				
+				
 
 			}break;
 			case '8':
 			{
+				const int MIN = -20;
+				const int MAX = 20;
+				const int ROWS = 10;
+				const int COLS = 15;
+				const int ARR_MAX = ROWS * COLS;
+				int posTemp = 0;
+				int negTemp = 0;
+
+				int matrix[ROWS][COLS] = { 0 };
+				int posNumbers[ARR_MAX]{};
+				int negNumbers[ARR_MAX]{};
+
+				for (int i = 0; i < ROWS; i++) //Сделать функцию с заполнением
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						matrix[i][j] = getRandomIntRB(MIN, MAX);
+					}
+				}
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						cout << setw(3) << matrix[i][j] << ' ';
+					}
+					cout << endl;
+				}
+
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						if (matrix[i][j] >= 0)
+						{
+							posNumbers[posTemp] = matrix[i][j];
+							posTemp++;
+						}
+						else
+						{
+							negNumbers[negTemp] = matrix[i][j];
+							negTemp++;
+						}
+					}
+				}
+
+				for (int i = 0; i < posTemp; i++)
+				{
+					cout << posNumbers[i] << ' ';
+				}
+				cout << endl;
+				for (int i = 0; i < negTemp; i++)
+				{
+					cout << negNumbers[i] << ' ';
+				}
+
+				cout << endl;
+				cout << getMax(posNumbers, posTemp) << endl;
 
 			}break;
 			default:
@@ -268,4 +404,15 @@ int primeNumber(int userNum)
 	for (int i = 2; i <= sqrt(userNum); i++) //Ещё раз разобраться в этом
 		if (userNum % i == 0) return false;
 	return true;
+}
+
+int getMax(int array[], int arraySize)
+{
+	int maxIndex = 0;
+	for (int i = 0; i < arraySize; i++)
+	{
+		if (array[i + 1] > array[i]) maxIndex = i + 1;
+	}
+	
+	return array[maxIndex];
 }
