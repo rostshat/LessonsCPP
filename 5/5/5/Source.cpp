@@ -9,6 +9,7 @@ int getRandomIntRB(int min = 0, int max = 100);
 float getPercentage(int all_percent, int number);
 int primeNumber(int userNum);
 int getMax(int array[], int arraySize);
+int getMin(int array[], int arraySize);
 void getAverageDifferent(double average, int thisHalf);
 
 const int numberOfStudent = 16;
@@ -351,14 +352,16 @@ int main()
 					}
 				}
 
-				for (int i = 0; i < ROWS; i++)
-				{
-					for (int j = 0; j < COLS; j++)
+				/*
+					for (int i = 0; i < ROWS; i++)
 					{
-						cout << setw(3) << matrix[i][j] << ' ';
+						for (int j = 0; j < COLS; j++)
+						{
+							cout << setw(3) << matrix[i][j] << ' ';
+						}
+						cout << endl;
 					}
-					cout << endl;
-				}
+				*/
 
 				for (int i = 0; i < ROWS; i++)
 				{
@@ -388,7 +391,8 @@ int main()
 				}
 
 				cout << endl;
-				cout << getMax(posNumbers, posTemp) << endl;
+				cout << endl << getMax(posNumbers, posTemp) << endl;
+				cout << endl << getMin(negNumbers, negTemp) << endl;
 
 			}break;
 			default:
@@ -425,13 +429,24 @@ int primeNumber(int userNum)
 
 int getMax(int array[], int arraySize)
 {
-	int maxIndex = 0;
+	int max = array[0];
 	for (int i = 0; i < arraySize; i++)
 	{
-		if (array[i + 1] > array[i]) maxIndex = i + 1;
+		if (array[i + 1] < array[i]) max = array[i + 1];
 	}
-	
-	return array[maxIndex];
+
+	return max;
+}
+
+int getMin(int array[], int arraySize)
+{
+	int min = array[0];
+	for (int i = 0; i < arraySize; i++)
+	{
+		if (array[i + 1] < array[i]) min = array[i + 1];
+	}
+
+	return min;
 }
 
 void getAverageDifferent(double average, int thisHalf)
