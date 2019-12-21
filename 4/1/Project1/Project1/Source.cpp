@@ -167,7 +167,7 @@ void symbolLine(int length, char symbol)
 {
 	for (int i = 0; i < length / 2; i++)
 	{
-		cout << symbol << '$';
+		cout << symbol << (char)(symbol + 1);
 	}
 }
 

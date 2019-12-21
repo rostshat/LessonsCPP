@@ -51,7 +51,7 @@ int main()
 				{
 					cout << "Enter your number of marks (more than 20): ";
 					cin >> numberOfMarks;
-				} while (numberOfMarks < 20);
+				} while (numberOfMarks < 20 || numberOfMarks > 100);
 
 
 				/*GENERATE MARKS*/
@@ -327,7 +327,7 @@ int main()
 						getAverageDifferent(average, numberOfPrecipitationPerYear[i][j]);
 						temp += numberOfPrecipitationPerYear[i][j];
 					}
-					cout << setw(15) << (double)temp / HALFS << endl;
+					cout << setw(15) << fixed << setprecision(1) << (double)temp / HALFS << endl;
 				}
 			}break;
 			case '8':
