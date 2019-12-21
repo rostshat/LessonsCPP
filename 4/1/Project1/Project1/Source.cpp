@@ -12,7 +12,7 @@ void symbolLine(int length, char symbol);
 double resistanceOfLine(double firstResistor, double secondResistor, char type);
 
 
-int main() //Если что-то не так, просто бросьте на доработку, потому что 5 задание я не полностью понял
+int main() //Г…Г±Г«ГЁ Г·ГІГ®-ГІГ® Г­ГҐ ГІГ ГЄ, ГЇГ°Г®Г±ГІГ® ГЎГ°Г®Г±ГјГІГҐ Г­Г  Г¤Г®Г°Г ГЎГ®ГІГЄГі, ГЇГ®ГІГ®Г¬Гі Г·ГІГ® 5 Г§Г Г¤Г Г­ГЁГҐ Гї Г­ГҐ ГЇГ®Г«Г­Г®Г±ГІГјГѕ ГЇГ®Г­ГїГ«
 {
 	srand(time(NULL));
 	char taskNum{};
@@ -34,92 +34,96 @@ int main() //Если что-то не так, просто бросьте на доработку, потому что 5 задан
 
 		switch (taskNum)
 		{
-			case '1':
+		case '1':
+		{
+			float radius{}, height{};
+
+			cout << "Enter your radius: ";
+			cin >> radius;
+			cout << "Enter your height: ";
+			cin >> height;
+
+			if (radius <= 0 || height <= 0)
 			{
-				float radius{}, height{};
-
-				cout << "Enter your radius: ";
-				cin >> radius;
-				cout << "Enter your height: ";
-				cin >> height;
-
-				if (radius <= 0 || height <= 0)
-				{
-					cout << "Cylinder doesn`t exist" << endl;
-				}
-				else
-				{
-					cout << volumeOfCylinder(radius, height) << endl;
-				}
-			}break;
-			case '2':
+				cout << "Cylinder doesn`t exist" << endl;
+			}
+			else
 			{
-				long first{}, second{}, third{};
+				cout << volumeOfCylinder(radius, height) << endl;
+			}
+		}break;
+		case '2':
+		{
+			long first{}, second{}, third{};
 
-				cout << "Enter your numbers \n";
-				cout << "First number: ";
-				cin >> first;
-				cout << "Second number: ";
-				cin >> second;
-				cout << "Third number: ";
-				cin >> third;
-				
-				cout << maxOfThreeNums(first, second, third) << endl;
-			}break;
-			case '3':
+			cout << "Enter your numbers \n";
+			cout << "First number: ";
+			cin >> first;
+			cout << "Second number: ";
+			cin >> second;
+			cout << "Third number: ";
+			cin >> third;
+
+			cout << maxOfThreeNums(first, second, third) << endl;
+		}break;
+		case '3':
+		{
+			double deposit{}, percent{};
+			int days{};
+
+			while (deposit <= 0 || days <= 0)
 			{
-				double deposit{}, percent{};
-				int days{};
-
 				cout << "Enter your deposit: ";
 				cin >> deposit;
 				cout << "Enter your percent: ";
 				cin >> percent;
 				cout << "Enter your days: ";
 				cin >> days;
+				cout << endl;
+			}
 
-				cout << "After end u will have: " << dohod(deposit, percent, days) << endl;
-			}break;
-			case '4':
-			{
-				char userSymbol{};
+			cout << "After end u will have: " << dohod(deposit, percent, days) << endl;
+		}break;
+		case '4':
+		{
+			char userSymbol{};
 
-				cout << "Enter your letter: ";
-				cin >> userSymbol;
+			cout << "Enter your letter: ";
+			cin >> userSymbol;
 
-				cout << "Result: " << glasn(userSymbol) << endl;
-			}break;
-			case '5':
-			{
-				int length{};
-				char userSymbol{};
+			cout << "Result: " << glasn(userSymbol) << endl;
+		}break;
+		case '5':
+		{
+			int length{};
+			char userSymbol{};
 
-				cout << "Enter your line length: ";
-				cin >> length;
-				cout << "Enter your symbol: ";
-				cin >> userSymbol;
+			cout << "Enter your line length: ";
+			cin >> length;
+			cout << "Enter your symbol: ";
+			cin >> userSymbol;
 
-				symbolLine(length, userSymbol);
-			}break;
-			case '6':
-			{
-				char type{};
-				double firstResistor{}, secondResistor{};
+			symbolLine(length, userSymbol);
+		}break;
+		case '6':
+		{
+			char type{};
+			double firstResistor{}, secondResistor{};
 
-				cout << "Enter type of connection (0 - consistent; 1 - parallel): ";
-				cin >> type;
-				cout << "Enter resistance in 1st Resistor: ";
-				cin >> firstResistor;
-				cout << "Enter resistance in 2nd Resistor: ";
-				cin >> secondResistor;
+			cout << "Enter type of connection (0 - consistent; 1 - parallel): ";
+			cin >> type;
+			cout << "Enter resistance in 1st Resistor: ";
+			cin >> firstResistor;
+			cout << "Enter resistance in 2nd Resistor: ";
+			cin >> secondResistor;
 
-				cout << "R: " << resistanceOfLine(firstResistor, secondResistor, type) << endl;
-			}break;
+			cout << "R: " << resistanceOfLine(firstResistor, secondResistor, type) << endl;
+		}break;
 
-			default:
-			{
-				cout << "Enter a correct task nubmer\n";
-			}break;
+		default:
+		{
+			cout << "Enter a correct task nubmer\n";
+		}break;
 
 		}
 		system("pause");
@@ -133,11 +137,12 @@ float volumeOfCylinder(float radius, float height)
 	const float PI = 3.1415f;
 	return PI * radius * height;
 }
+
 long maxOfThreeNums(long firstNum, long secondNum, long thirdNum)
 {
 	return  firstNum > secondNum ? firstNum > thirdNum ? firstNum : thirdNum : secondNum > thirdNum ? secondNum : thirdNum;
-
 }
+
 double dohod(double deposit, double percent, int days)
 {
 	const int daysInYear = 365;
@@ -151,15 +156,15 @@ double dohod(double deposit, double percent, int days)
 
 	return deposit;
 }
+
 double glasn(char symbol)
 {
 	if (symbol == 'a' || symbol == 'e' || symbol == 'i' || symbol == 'o' || symbol == 'u' || symbol == 'A' || symbol == 'E' || symbol == 'I' || symbol == 'O' || symbol == 'U') return 1;
 	return 0;
 }
+
 void symbolLine(int length, char symbol)
 {
-
-
 	for (int i = 0; i < length / 2; i++)
 	{
 		cout << symbol << '$';
@@ -168,6 +173,5 @@ void symbolLine(int length, char symbol)
 
 double resistanceOfLine(double firstResistor, double secondResistor, char type)
 {
-	//if (type != '1' && type != '0') return -1;
 	return (type == '0') ? firstResistor + secondResistor : (type == '1') ? (firstResistor * secondResistor) / (firstResistor + secondResistor) : -1;
 }
