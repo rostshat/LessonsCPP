@@ -113,7 +113,7 @@ int main()
 					{
 						if (goods[i][j] < average)
 						{
-							cout << setw(FORMAT) << i + 1 << " : " << goods[i][j] << endl;
+							cout << "Good #" << setw(2) << i + 1 << " costs " << goods[i][j] << endl;
 						}
 					}
 				}
@@ -323,8 +323,8 @@ int main()
 					for (int j = 0; j < HALFS; j++)
 					{
 						cout << setw(25) << numberOfPrecipitationPerYear[i][j];
-						getAverageDifferent(average, numberOfPrecipitationPerYear[i][j]);
 
+						getAverageDifferent(average, numberOfPrecipitationPerYear[i][j]);
 						temp += numberOfPrecipitationPerYear[i][j];
 					}
 					cout << setw(15) << (double)temp / HALFS << endl;
@@ -384,7 +384,7 @@ int main()
 				{
 					cout << posNumbers[i] << ' ';
 				}
-				cout << endl;
+				cout << endl << endl;
 				for (int i = 0; i < negTemp; i++)
 				{
 					cout << negNumbers[i] << ' ';
@@ -430,9 +430,10 @@ int primeNumber(int userNum)
 int getMax(int array[], int arraySize)
 {
 	int max = array[0];
-	for (int i = 0; i < arraySize; i++)
+	
+	for (int i = 1; i < arraySize; i++)
 	{
-		if (array[i + 1] < array[i]) max = array[i + 1];
+		if (array[i] > max) max = array[i];
 	}
 
 	return max;
@@ -441,9 +442,10 @@ int getMax(int array[], int arraySize)
 int getMin(int array[], int arraySize)
 {
 	int min = array[0];
-	for (int i = 0; i < arraySize; i++)
+
+	for (int i = 1; i < arraySize; i++)
 	{
-		if (array[i + 1] < array[i]) min = array[i + 1];
+		if (array[i] < min) min = array[i];
 	}
 
 	return min;
