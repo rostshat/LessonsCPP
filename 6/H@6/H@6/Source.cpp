@@ -19,7 +19,7 @@ int main()
 	{
 		system("cls");
 		cout << "Choise your task: \n";
-		cout << "1 - 33 to 127 \n";
+		cout << "1 - Volume of figures\n";
 		cout << "2 - Drawing \n";
 		cout << "3 - All without 3,6\n";
 		cout << "4 - MassRevers\n";
@@ -38,9 +38,9 @@ int main()
 				char choose{};
 
 				cout << "Select your figure foor get it`s volume: \n";
-				cout << "Parallelepiped: \n";
-				cout << "Cylinder: \n";
-				cout << "Sphere: \n";
+				cout << "1 - Parallelepiped\n";
+				cout << "2 - Cylinder\n";
+				cout << "3 - Sphere\n";
 				cin >> choose;
 				cout << endl;
 
@@ -51,13 +51,15 @@ int main()
 						double height{};
 						double square{};
 
-						cout << "Enter your height: ";
-						cin >> height;
-						cout << "Enter your square: ";
-						cin >> square;
+						do {
+							cout << "Enter your height: ";
+							cin >> height;
+							cout << "Enter your square: ";
+							cin >> square;
+							cout << endl;
+						} while (height <= 0 || square <= 0);
 
 						cout << "V: " << volume(height, square) << endl;
-
 						break;
 					}
 					case '2':
@@ -65,24 +67,29 @@ int main()
 						double height{};
 						double square{};
 
-						cout << "Enter your height: ";
-						cin >> height;
-						cout << "Enter your square: ";
-						cin >> square;
+						do {
+							cout << "Enter your height: ";
+							cin >> height;
+							cout << "Enter your square: ";
+							cin >> square;
+							cout << endl;
+						} while (height <= 0 || square <= 0);
 
 						cout << "V: " << volume(height, square, true) << endl;
-
 						break;
 					}
 					case '3':
 					{
 						double radius{};
 
-						cout << "Enter your radius: ";
-						cin >> radius;
+						do
+						{
+							cout << "Enter your radius: ";
+							cin >> radius;
+							cout << endl;
+						} while (radius <= 0);
 
 						cout << "V: " << volume(radius) << endl;
-
 						break;
 					}
 					default:
