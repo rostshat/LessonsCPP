@@ -65,7 +65,15 @@ int main()
 
 				/*OUTPUT MARKS*/
 
-				for (int i = 1; i <= MAX_MARK; i++)
+				for (int i = 0; i < numberOfMarks; i++)
+				{
+					for (int j = 0; j < 1; j++)
+					{
+						cout << marks[i][j] << endl;
+					}
+				}
+
+				/*for (int i = 1; i <= MAX_MARK; i++)
 				{
 					int temp{};
 					int sumTemp{};
@@ -74,7 +82,7 @@ int main()
 						if(marks[j][0] == i) temp++;
 					}
 					cout << setw(4) << fixed << setprecision(2) << i << " : " << temp << " : " << getPercentage(numberOfMarks, temp) << '%' << endl;
-				}
+				}*/
 			}break;
 			case '2':
 			{
