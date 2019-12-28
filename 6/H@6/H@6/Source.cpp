@@ -17,6 +17,18 @@ T getRandom(T min, T max, int order = 1)
 	return (T)(rand() % (((int)max - (int)min) * order) + min * order) / order;
 }
 
+template <typename T>
+void showMatrix(T matrix[], int rows, int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << setw(5) << matrix[i][j] << ' ';
+		}
+		cout << endl;
+	}
+}
 
 int main()
 {
@@ -126,7 +138,7 @@ int main()
 				{
 					case '1':
 					{
-						int matrix[15][12] = { 0 };
+						int matrix[ROWS][COLS] = { 0 };
 						int min, max;
 
 						cout << "Enter min number: ";
@@ -156,7 +168,7 @@ int main()
 					}
 					case '2':
 					{
-						char matrix[15][12] = { 0 };
+						char matrix[ROWS][COLS] = { 0 };
 						char min, max;
 
 						cout << "Enter min symbol: ";
@@ -186,7 +198,7 @@ int main()
 					}
 					case '3':
 					{
-						double matrix[15][12] = { 0 };
+						double matrix[ROWS][COLS] = { 0 };
 						double min{}, max{};
 						int order{};
 
@@ -228,7 +240,19 @@ int main()
 			}
 			case '3':
 			{
+				const int ROWS = 10;
+				const int COLS = 10;
+				int matrix[ROWS][COLS] = { 0 };
 
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						matrix[i][j] = getRandom(0, 100);
+					}
+				}
+
+				showMatrix(matrix, ROWS, COLS);
 
 				break;
 			}
