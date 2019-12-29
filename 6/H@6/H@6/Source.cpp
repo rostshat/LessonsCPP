@@ -30,6 +30,32 @@ void showMatrix(T matrix[], int rows, int cols)
 	}
 }
 
+template <typename T>
+void initMatrix(T matrix[], int rows, int cols, double min, double max, int order)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			matrix[i][j] = getRandom(min, max, order);
+		}
+	}
+}
+
+template <typename T>
+void squareMatrixDiagonalSum(T matrix[], int size, bool diagonalType, bool isDouble = false)
+{
+	int sum = 0;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (!diagonalType) sum += matrix[i][i];
+		if (diagonalType) sum += matrix[i][size - i - 1];
+	}
+	
+	cout << sum << endl;
+}
+
 int main()
 {
 	srand(time(NULL));
@@ -244,21 +270,33 @@ int main()
 				const int COLS = 10;
 				int matrix[ROWS][COLS] = { 0 };
 
-				for (int i = 0; i < ROWS; i++)
-				{
-					for (int j = 0; j < COLS; j++)
-					{
-						matrix[i][j] = getRandom(0, 100);
-					}
-				}
-
+				initMatrix(matrix, ROWS, COLS, 0, 100, 1);
 				showMatrix(matrix, ROWS, COLS);
 
 				break;
 			}
 			case '4':
 			{
+				const int SIZE = 10;
 
+				int matrix[SIZE][SIZE] = { 0 };
+				bool choose{};
+				int order;
+				double min, max;
+
+				cout << "Default diagolan = 0/ Reversed diagolan = 1 \nEnter your choose: ";
+				cin >> choose;
+
+				cout << "Enter minimal number: ";
+				cin >> min;
+				cout << "Enter maximal number: ";
+				cin >> max;
+				cout << "Enter order: ";
+				cin >> order;
+
+				initMatrix(matrix, SIZE, SIZE, min, max, order);
+				showMatrix(matrix, SIZE, SIZE);
+				squareMatrixDiagonalSum(matrix, SIZE, choose);
 
 				break;
 			}

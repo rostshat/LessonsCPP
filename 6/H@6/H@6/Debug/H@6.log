@@ -1,3 +1,25 @@
 ﻿  Source.cpp
-R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(35,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  H@6.vcxproj -> R:\ItStep\C++\LessonsCPP\6\H@6\Debug\H@6.exe
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(61,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(40,28): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(40,28): warning C4244:         with
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(40,28): warning C4244:         [
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(40,28): warning C4244:             T=double
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(40,28): warning C4244:         ]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(273): message : see reference to function template instantiation 'void initMatrix<int[10]>(T [],int,int,double,double,int)' being compiled
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(273): message :         with
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(273): message :         [
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(273): message :             T=int [10]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(273): message :         ]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(48,1): error C2440: 'initializing': cannot convert from 'int' to 'T'
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(48,1): error C2440:         with
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(48,1): error C2440:         [
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(48,1): error C2440:             T=int [10]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(48,1): error C2440:         ]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(48,8): message : There are no conversions to array types, although there are conversions to references or pointers to arrays
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(299): message : see reference to function template instantiation 'void squareMatrixDiagonalSum<int[10]>(T [],int,bool,bool)' being compiled
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(299): message :         with
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(299): message :         [
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(299): message :             T=int [10]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(299): message :         ]
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(52,1): error C2106: '+=': left operand must be l-value
+R:\ItStep\C++\LessonsCPP\6\H@6\H@6\Source.cpp(53,1): error C2106: '+=': left operand must be l-value
