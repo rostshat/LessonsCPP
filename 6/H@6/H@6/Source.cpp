@@ -12,7 +12,7 @@ double volume(double height, double square, bool cylinder);
 double volume(double radius);
 
 template <typename T>
-T getRandom(T min, T max, int order = 1)
+T getRandom(const T min, const T max, int order = 1)
 {
 	return (T)(rand() % (((int)max - (int)min) * order) + min * order) / order;
 }
@@ -31,29 +31,32 @@ void showMatrix(T matrix[], int rows, int cols)
 }
 
 template <typename T>
-void initMatrix(T matrix[], int rows, int cols, double min, double max, int order)
-{
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < cols; j++)
-		{
-			matrix[i][j] = getRandom(min, max, order);
-		}
-	}
-}
-
-template <typename T>
 void squareMatrixDiagonalSum(T matrix[], int size, bool diagonalType, bool isDouble = false)
 {
-	int sum = 0;
-
-	for (int i = 0; i < size; i++)
+	if (isDouble)
 	{
-		if (!diagonalType) sum += matrix[i][i];
-		if (diagonalType) sum += matrix[i][size - i - 1];
+		double sum = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			if (!diagonalType) sum += matrix[i][i];
+			if (diagonalType) sum += matrix[i][size - i - 1];
+		}
+
+		cout << sum << endl;
 	}
-	
-	cout << sum << endl;
+	else
+	{
+		int sum = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			if (!diagonalType) sum += matrix[i][i];
+			if (diagonalType) sum += matrix[i][size - i - 1];
+		}
+
+		cout << sum << endl;
+	}
 }
 
 int main()
@@ -67,11 +70,8 @@ int main()
 		cout << "Choise your task: \n";
 		cout << "1 - Volume of figures\n";
 		cout << "2 - Matrix Generator \n";
-		cout << "3 - All without 3,6\n";
+		cout << "3 - Show Matrix\n";
 		cout << "4 - MassRevers\n";
-		cout << "4 - Calculator\n";
-		cout << "5 - Difference in array\n";
-		cout << "6 - MaxNum x%3 == 0\n"; //Корректно назвать
 		cout << "0 - Exit\n";
 
 		cin >> taskNum;
@@ -167,11 +167,14 @@ int main()
 						int matrix[ROWS][COLS] = { 0 };
 						int min, max;
 
-						cout << "Enter min number: ";
-						cin >> min;
-						cout << "Enter max number: ";
-						cin >> max;
-						cout << endl;
+						do {
+							cout << "Enter min number: ";
+							cin >> min;
+							cout << "Enter max number: ";
+							cin >> max;
+							cout << endl;
+
+						} while (min > max);
 
 						for (int i = 0; i < ROWS; i++)
 						{
@@ -180,15 +183,7 @@ int main()
 								matrix[i][j] = getRandom(min, max);
 							}
 						}
-
-						for (int i = 0; i < ROWS; i++)
-						{
-							for (int j = 0; j < COLS; j++)
-							{
-								cout << setw(4) << matrix[i][j] << ' ';
-							}
-							cout << endl;
-						}
+						showMatrix(matrix, ROWS, COLS);
 
 						break;
 					}
@@ -210,15 +205,7 @@ int main()
 								matrix[i][j] = getRandom(min, max);
 							}
 						}
-
-						for (int i = 0; i < ROWS; i++)
-						{
-							for (int j = 0; j < COLS; j++)
-							{
-								cout << setw(4) << matrix[i][j] << ' ';
-							}
-							cout << endl;
-						}
+						showMatrix(matrix, ROWS, COLS);
 
 						break;
 					}
@@ -228,13 +215,15 @@ int main()
 						double min{}, max{};
 						int order{};
 
-						cout << "Enter min number: ";
-						cin >> min;
-						cout << "Enter max number: ";
-						cin >> max;
-						cout << "Enter a number of numbers after comma: ";
-						cin >> order;
-						cout << endl;
+						do {
+							cout << "Enter min number: ";
+							cin >> min;
+							cout << "Enter max number: ";
+							cin >> max;
+							cout << "Enter a number of numbers after comma: ";
+							cin >> order;
+							cout << endl;
+						} while (min > max);
 
 						for (int i = 0; i < ROWS; i++)
 						{
@@ -243,15 +232,7 @@ int main()
 								matrix[i][j] = getRandom(min, max, order);
 							}
 						}
-
-						for (int i = 0; i < ROWS; i++)
-						{
-							for (int j = 0; j < COLS; j++)
-							{
-								cout << setw(7) << matrix[i][j] << ' ';
-							}
-							cout << endl;
-						}
+						showMatrix(matrix, ROWS, COLS);
 
 						break;
 					}
@@ -268,9 +249,18 @@ int main()
 			{
 				const int ROWS = 10;
 				const int COLS = 10;
+				const int MIN = 1;
+				const int MAX = 100;
+
 				int matrix[ROWS][COLS] = { 0 };
 
-				initMatrix(matrix, ROWS, COLS, 0, 100, 1);
+				for (int i = 0; i < ROWS; i++)
+				{
+					for (int j = 0; j < COLS; j++)
+					{
+						matrix[i][j] = getRandom(MIN, MAX);
+					}
+				}
 				showMatrix(matrix, ROWS, COLS);
 
 				break;
@@ -278,25 +268,66 @@ int main()
 			case '4':
 			{
 				const int SIZE = 10;
+				bool choose{}, chooseType{};
 
-				int matrix[SIZE][SIZE] = { 0 };
-				bool choose{};
-				int order;
-				double min, max;
-
-				cout << "Default diagolan = 0/ Reversed diagolan = 1 \nEnter your choose: ";
+				cout << "Choose type of matrix 0 - Int32/ 1 - Double \nEnter your choose: ";
 				cin >> choose;
 
-				cout << "Enter minimal number: ";
-				cin >> min;
-				cout << "Enter maximal number: ";
-				cin >> max;
-				cout << "Enter order: ";
-				cin >> order;
+				if (choose)
+				{
+					double matrix[SIZE][SIZE] = { 0 };
+					double min, max;
+					int order;
 
-				initMatrix(matrix, SIZE, SIZE, min, max, order);
-				showMatrix(matrix, SIZE, SIZE);
-				squareMatrixDiagonalSum(matrix, SIZE, choose);
+					cout << "Enter minimal number: ";
+					cin >> min;
+					cout << "Enter maximal number: ";
+					cin >> max;
+					cout << "Enter order: ";
+					cin >> order;
+					cout << "Default diagolan = 0/ Reversed diagolan = 1 \nEnter your choose: ";
+					cin >> chooseType;
+
+					for (int i = 0; i < SIZE; i++)
+					{
+						for (int j = 0; j < SIZE; j++)
+						{
+							matrix[i][j] = getRandom(min, max, order);
+						}
+					}
+					showMatrix(matrix, SIZE, SIZE);
+					squareMatrixDiagonalSum(matrix, SIZE, chooseType, true);
+				}
+				else
+				{
+					if (choose)
+					{
+						int matrix[SIZE][SIZE] = { 0 };
+						int min, max;
+
+						cout << "Enter minimal number: ";
+						cin >> min;
+						cout << "Enter maximal number: ";
+						cin >> max;
+						cout << "Default diagolan = 0/ Reversed diagolan = 1 \nEnter your choose: ";
+						cin >> chooseType;
+
+						for (int i = 0; i < SIZE; i++)
+						{
+							for (int j = 0; j < SIZE; j++)
+							{
+								matrix[i][j] = getRandom(min, max);
+							}
+						}
+						showMatrix(matrix, SIZE, SIZE);
+						squareMatrixDiagonalSum(matrix, SIZE, chooseType);
+					}
+				}
+
+
+				
+
+
 
 				break;
 			}
