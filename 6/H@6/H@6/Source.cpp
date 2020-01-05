@@ -31,33 +31,12 @@ void showMatrix(T matrix[], int rows, int cols)
 }
 
 template <typename T>
-void squareMatrixDiagonalSum(T matrix[], int size, bool diagonalType, bool isDouble = false)
-{
-	if (isDouble)
-	{
-		double sum = 0;
+void squareMatrixDiagonalSum(T matrix[], int size, bool diagonalType, bool isDouble = false);
 
-		for (int i = 0; i < size; i++)
-		{
-			if (!diagonalType) sum += matrix[i][i];
-			if (diagonalType) sum += matrix[i][size - i - 1];
-		}
-
-		cout << sum << endl;
-	}
-	else
-	{
-		int sum = 0;
-
-		for (int i = 0; i < size; i++)
-		{
-			if (!diagonalType) sum += matrix[i][i];
-			if (diagonalType) sum += matrix[i][size - i - 1];
-		}
-
-		cout << sum << endl;
-	}
-}
+template <typename T>
+void maxNumberInPerimetr(const T const matrix[], const int rows, const int cols, bool isDouble = false);
+template <typename T>
+void getAverageNumberFromMatrix(const T const matrix[], const int rows, const int COLS, bool isDouble);
 
 int main()
 {
@@ -71,7 +50,9 @@ int main()
 		cout << "1 - Volume of figures\n";
 		cout << "2 - Matrix Generator \n";
 		cout << "3 - Show Matrix\n";
-		cout << "4 - MassRevers\n";
+		cout << "4 - Diagonal Summ\n";
+		cout << "5 - Max number in P\n";
+		cout << "6 - Average number\n";
 		cout << "0 - Exit\n";
 
 		cin >> taskNum;
@@ -165,16 +146,7 @@ int main()
 					case '1':
 					{
 						int matrix[ROWS][COLS] = { 0 };
-						int min, max;
-
-						do {
-							cout << "Enter min number: ";
-							cin >> min;
-							cout << "Enter max number: ";
-							cin >> max;
-							cout << endl;
-
-						} while (min > max);
+						int min{}, max{};
 
 						for (int i = 0; i < ROWS; i++)
 						{
@@ -331,6 +303,119 @@ int main()
 
 				break;
 			}
+			case '5':
+			{
+				const int SIZE = 10;
+				char matrixType;
+
+				cout << "0 - Integer \n";
+				cout << "1 - Double \n";
+				cout << "2 - Char \n";
+				cout << "Enter your matrix type: \n";
+				cin >> matrixType;
+
+				switch (matrixType)
+				{
+				case'1':
+				{
+					int matrix[SIZE][SIZE] = { 0 };
+					int min, max;
+
+					do {
+						cout << "Enter min number: ";
+						cin >> min;
+						cout << "Enter max number: ";
+						cin >> max;
+						cout << endl;
+
+					} while (min >= max);
+
+					for (int i = 0; i < SIZE; i++)
+					{
+						for (int j = 0; j < SIZE; j++)
+						{
+							matrix[i][j] = getRandom(min, max);
+						}
+					}
+					showMatrix(matrix, SIZE, SIZE);
+					maxNumberInPerimetr(matrix, SIZE, SIZE);
+
+					break;
+				}
+				default:
+					break;
+				}
+
+				break;
+			}
+			case'6':
+			{
+				const int ROWS = 15;
+				const int COLS = 12;
+				
+				bool isDouble;
+
+				cout << "Enter type of the matrix: \n 0 - Int32\n 1 - Double \n";
+				cin >> isDouble;
+
+				if (isDouble)
+				{
+					double matrix[ROWS][COLS] = { 0 };
+					double min, max;
+					int order;
+
+
+					do {
+						cout << "Enter min number: ";
+						cin >> min;
+						cout << "Enter max number: ";
+						cin >> max;
+						cout << "Enter number of numbers after comma: ";
+						cin >> order;
+						cout << endl;
+
+					} while (min >= max);
+
+					for (int i = 0; i < ROWS; i++)
+					{
+						for (int j = 0; j < COLS; j++)
+						{
+							matrix[i][j] = getRandom(min, max, order);
+						}
+					}
+
+					showMatrix(matrix, ROWS, COLS);
+					getAverageNumberFromMatrix(matrix, ROWS, COLS, isDouble);
+				}
+				else
+				{
+					int matrix[ROWS][COLS] = { 0 };
+					int min, max;
+
+					do {
+						cout << "Enter min number: ";
+						cin >> min;
+						cout << "Enter max number: ";
+						cin >> max;
+						cout << endl;
+
+					} while (min >= max);
+
+
+					for (int i = 0; i < ROWS; i++)
+					{
+						for (int j = 0; j < COLS; j++)
+						{
+							matrix[i][j] = getRandom(min, max);
+						}
+					}
+
+					showMatrix(matrix, ROWS, COLS);
+					getAverageNumberFromMatrix(matrix, ROWS, COLS, isDouble);
+				}
+
+				break;
+			}
 			default:
 			{
 				cout << "Enter a correct task number \n";
@@ -341,6 +426,120 @@ int main()
 	}
 
 	return 0;
+}
+
+template <typename T>
+void getAverageNumberFromMatrix(const T const matrix[], const int rows, const int COLS, bool isDouble)
+{
+	if (isDouble)
+	{
+		double sum{};
+		const int amountOfNumbers = rows * COLS;
+		
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < COLS; j++)
+			{
+				sum += matrix[i][j];
+			}
+		}
+
+		cout << endl << "Average numnber is: " << sum / amountOfNumbers << endl;
+	}
+	else
+	{
+		int sum{};
+		const int amountOfNumbers = rows * COLS;
+
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < COLS; j++)
+			{
+				sum += matrix[i][j];
+			}
+		}
+
+		cout << endl << "Average numnber is: " << sum / amountOfNumbers << endl;
+	}
+}
+template <typename T>
+void squareMatrixDiagonalSum(T matrix[], int size, bool diagonalType, bool isDouble)
+{
+	if (isDouble)
+	{
+		double sum = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			if (!diagonalType) sum += matrix[i][i];
+			if (diagonalType) sum += matrix[i][size - i - 1];
+		}
+
+		cout << sum << endl;
+	}
+	else
+	{
+		int sum = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			if (!diagonalType) sum += matrix[i][i];
+			if (diagonalType) sum += matrix[i][size - i - 1];
+		}
+
+		cout << sum << endl;
+	}
+}
+
+template <typename T>
+void maxNumberInPerimetr(const T const matrix[], const int rows, const int cols, bool isDouble)
+{
+	if (isDouble)
+	{
+		double max{};
+		max = matrix[0][0];
+
+		for (int i = 0; i < rows; i += rows - 1)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (matrix[i][j] > max) max = matrix[i][j];
+			}
+		}
+
+		for (int i = 0; i < rows; i += rows - 1)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (matrix[j][i] > max) max = matrix[j][i];
+			}
+		}
+
+		cout << max << endl;
+	}
+	else
+	{
+		int max{};
+		max = matrix[0][0];
+
+		for (int i = 0; i < rows; i += rows - 1)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (matrix[i][j] > max) max = matrix[i][j];
+			}
+		}
+
+		for (int i = 0; i < rows; i += rows - 1)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (matrix[j][i] > max) max = matrix[j][i];
+			}
+		}
+
+		cout << max << endl;
+	}
 }
 
 double volume(double height, double square)
