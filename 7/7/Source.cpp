@@ -28,6 +28,9 @@ void bubbleSortDescending(T* array, const int size, const int firstIndex, const 
 template <typename T>
 void bubbleSortAscending(T* array, const int size, const int firstIndex, const int lastIndex);
 
+template <typename T>
+void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex);
+
 int main()
 {
 	srand(time(NULL));
@@ -99,7 +102,7 @@ int main()
 				fillArray(array, ARR_SIZE, MIN, MAX, 100);
 				showArray(array, ARR_SIZE);
 				WRAP;
-				bubbleSortAscending(array, ARR_SIZE, ARRAY_START, ARR_SIZE / 2);
+				insertionSortAscending(array, ARR_SIZE, ARRAY_START, ARR_SIZE / 2);
 				showArray(array, ARR_SIZE);
 				WRAP;
 				bubbleSortDescending(array, ARR_SIZE, ARR_SIZE / 2, ARR_SIZE);
@@ -218,3 +221,42 @@ void bubbleSortAscending(T* array, const int size, const int firstIndex, const i
 		}
 	}
 }
+
+//template <typename T>
+//void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex)
+//{
+//	int temp, item;
+//	for (int i = firstIndex + 1; i < lastIndex; i++)
+//	{
+//		for (int j = firstIndex; j < lastIndex; j++)
+//		{
+//			item = i - 1; // запоминаем индекс предыдущего элемента массива
+//			while (item >= 0 && array[item] > temp) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
+//			{
+//				arrayPtr[item + 1] = arrayPtr[item]; // перестановка элементов массива
+//				arrayPtr[item] = temp;
+//				item--;
+//			}
+//		}
+//	}
+//}
+
+template <typename T>
+void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex)
+{
+	T temp; // временная переменная для хранения значения элемента сортируемого массива
+	int item; // индекс предыдущего элемента
+	for (int counter = 1; counter < size; counter++)
+	{
+		temp = array[counter]; // инициализируем временную переменную текущим значением элемента массива
+		item = counter - 1; // запоминаем индекс предыдущего элемента массива
+		while (item >= 0 && array[item] > temp) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
+		{
+			array[item + 1] = array[item]; // перестановка элементов массива
+			array[item] = temp;
+			item--;
+		}
+	}
+}
+
+
