@@ -31,6 +31,12 @@ void bubbleSortAscending(T* array, const int size, const int firstIndex, const i
 template <typename T>
 void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex);
 
+template <typename T>
+void chooseSortDescending(T* array, const int size, const int firstIndex, const int lastIndex);
+
+template <typename T>
+void arrayReverse(T* array, const int size, const int firstIndex, const int lastIndex);
+
 int main()
 {
 	srand(time(NULL));
@@ -105,14 +111,46 @@ int main()
 				insertionSortAscending(array, ARR_SIZE, ARRAY_START, ARR_SIZE / 2);
 				showArray(array, ARR_SIZE);
 				WRAP;
-				bubbleSortDescending(array, ARR_SIZE, ARR_SIZE / 2, ARR_SIZE);
+				chooseSortDescending(array, ARR_SIZE, ARR_SIZE / 2, ARR_SIZE);
 				showArray(array, ARR_SIZE);
 
 				break;
 			}
 			case '3':
 			{
+				const short ARR_SIZE = 30;
+				const int MIN = -20;
+				const int MAX = 20;
 
+				int average{}, temp{};
+
+				int array[30] = { 0 };
+
+				fillArray(array, ARR_SIZE, MIN, MAX);
+				showArray(array, ARR_SIZE);
+				WRAP;
+
+				for (int i = 0; i < ARR_SIZE; i++)
+				{
+					temp += array[i];
+				}
+				average = temp / ARR_SIZE;
+
+				cout << "Average: " << average << endl;
+
+				if (average > 0)
+				{
+					temp = ARR_SIZE / 3 * 2 - 1;
+					bubbleSortAscending(array, ARR_SIZE, ARRAY_START, temp);
+					showArray(array, ARR_SIZE);
+				}
+				else
+				{
+					temp = ARR_SIZE / 3 - 1;
+					bubbleSortAscending(array, ARR_SIZE, ARRAY_START, temp);
+					arrayReverse(array, ARR_SIZE, temp, ARR_SIZE);
+					showArray(array, ARR_SIZE);
+				}
 
 				break;
 			}
@@ -222,34 +260,15 @@ void bubbleSortAscending(T* array, const int size, const int firstIndex, const i
 	}
 }
 
-//template <typename T>
-//void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex)
-//{
-//	int temp, item;
-//	for (int i = firstIndex + 1; i < lastIndex; i++)
-//	{
-//		for (int j = firstIndex; j < lastIndex; j++)
-//		{
-//			item = i - 1; // запоминаем индекс предыдущего элемента массива
-//			while (item >= 0 && array[item] > temp) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
-//			{
-//				arrayPtr[item + 1] = arrayPtr[item]; // перестановка элементов массива
-//				arrayPtr[item] = temp;
-//				item--;
-//			}
-//		}
-//	}
-//}
-
 template <typename T>
 void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex)
 {
 	T temp; // временная переменная для хранения значения элемента сортируемого массива
 	int item; // индекс предыдущего элемента
-	for (int counter = 1; counter < size; counter++)
+	for (int i = firstIndex + 1; i < lastIndex; i++)
 	{
-		temp = array[counter]; // инициализируем временную переменную текущим значением элемента массива
-		item = counter - 1; // запоминаем индекс предыдущего элемента массива
+		temp = array[i]; // инициализируем временную переменную текущим значением элемента массива
+		item = i - 1; // запоминаем индекс предыдущего элемента массива
 		while (item >= 0 && array[item] > temp) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
 		{
 			array[item + 1] = array[item]; // перестановка элементов массива
@@ -259,4 +278,31 @@ void insertionSortAscending(T* array, const int size, const int firstIndex, cons
 	}
 }
 
+template <typename T>
+void chooseSortDescending(T* array, const int size, const int firstIndex, const int lastIndex)
+{
+	for (int i = firstIndex; i < lastIndex; i++)
+	{
+		T temp = array[firstIndex]; // временная переменная для хранения значения перестановки
+		for (int j = i + 1; j < lastIndex; j++)
+		{
+			if (array[i] < array[j])
+			{
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+		}
+	}
+}
 
+template <typename T>
+void arrayReverse(T* array, const int size, const int firstIndex, const int lastIndex)
+{
+	for (int i = firstIndex, counter = 0; i < lastIndex; i++, counter++)
+	{
+		int temp = array[i];
+		array[i] = array[lastIndex - counter - 1];
+		array[lastIndex - counter - 1] = temp;
+	}
+}
