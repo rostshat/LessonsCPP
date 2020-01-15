@@ -272,8 +272,6 @@ int main()
 				}
 				else
 				{
-					if (choose)
-					{
 						int matrix[SIZE][SIZE] = { 0 };
 						int min, max;
 
@@ -293,13 +291,7 @@ int main()
 						}
 						showMatrix(matrix, SIZE, SIZE);
 						squareMatrixDiagonalSum(matrix, SIZE, chooseType);
-					}
 				}
-
-
-				
-
-
 
 				break;
 			}
@@ -310,40 +302,68 @@ int main()
 
 				cout << "0 - Integer \n";
 				cout << "1 - Double \n";
-				cout << "2 - Char \n";
 				cout << "Enter your matrix type: \n";
 				cin >> matrixType;
 
 				switch (matrixType)
 				{
-				case'1':
-				{
-					int matrix[SIZE][SIZE] = { 0 };
-					int min, max;
-
-					do {
-						cout << "Enter min number: ";
-						cin >> min;
-						cout << "Enter max number: ";
-						cin >> max;
-						cout << endl;
-
-					} while (min >= max);
-
-					for (int i = 0; i < SIZE; i++)
+					case'0':
 					{
-						for (int j = 0; j < SIZE; j++)
-						{
-							matrix[i][j] = getRandom(min, max);
-						}
-					}
-					showMatrix(matrix, SIZE, SIZE);
-					maxNumberInPerimetr(matrix, SIZE, SIZE);
+						int matrix[SIZE][SIZE] = { 0 };
+						int min, max;
 
-					break;
-				}
-				default:
-					break;
+						do {
+							cout << "Enter min number: ";
+							cin >> min;
+							cout << "Enter max number: ";
+							cin >> max;
+							cout << endl;
+
+						} while (min >= max);
+
+						for (int i = 0; i < SIZE; i++)
+						{
+							for (int j = 0; j < SIZE; j++)
+							{
+								matrix[i][j] = getRandom(min, max);
+							}
+						}
+						showMatrix(matrix, SIZE, SIZE);
+						maxNumberInPerimetr(matrix, SIZE, SIZE);
+
+						break;
+					}
+					case'1':
+					{
+						double matrix[SIZE][SIZE] = { 0 };
+						double  min, max;
+						int order;
+
+						do {
+							cout << "Enter min number: ";
+							cin >> min;
+							cout << "Enter max number: ";
+							cin >> max;
+							cout << "Enter your order: ";
+							cin >> order;
+							cout << endl;
+
+						} while (min >= max || order < 1);
+
+						for (int i = 0; i < SIZE; i++)
+						{
+							for (int j = 0; j < SIZE; j++)
+							{
+								matrix[i][j] = getRandom(min, max, order);
+							}
+						}
+						showMatrix(matrix, SIZE, SIZE);
+						maxNumberInPerimetr(matrix, SIZE, SIZE, true);
+
+						break;
+					}
+					default:
+						break;
 				}
 
 				break;

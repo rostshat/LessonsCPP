@@ -156,6 +156,73 @@ int main()
 			}
 			case '4':
 			{
+				const int SIZE = 10;
+				int marksArray[SIZE];
+				
+				fillArray(marksArray, SIZE, 1, 12);
+
+				bool work = true;
+				int chose;
+
+				do
+				{
+					cout << "Menu" << endl;
+					cout << "1 - output all marks \n";
+					cout << "2 - exam remake\n";
+					cout << "3 - scholarships\n";
+					cout << "4 - exit\n";
+					cin >> chose;
+					cout << endl;
+
+					switch (chose)
+					{
+						case 1:
+						{
+							for (int i = 0; i < 10; i++)
+							{
+								cout << marksArray[i] << endl;
+							}
+
+
+							break;
+						}
+						case 2:
+						{
+							int repl;
+							cout << "Mark for replacement:";
+							cin >> repl;
+							cout << "Old mark: " << marksArray[repl - 1] << endl;
+
+							cout << "enter new mark:";
+							cin >> marksArray[repl - 1];
+
+							break;
+						}
+						case 3:
+						{
+							int sum{};
+							double average_mark;
+
+							for (int i = 0; i < 10; i++)
+							{
+								sum += marksArray[i];
+							}
+
+							average_mark = sum / 10;
+							cout << sum << endl;
+
+							cout << average_mark;
+
+							if (average_mark == 10.7 || average_mark > 10.7)
+								cout << "Have scholarships \n";
+							break;
+						}
+						case 4:
+						{
+							work = false;
+						}
+					}
+				} while (work);
 
 				break;
 			}
@@ -263,15 +330,15 @@ void bubbleSortAscending(T* array, const int size, const int firstIndex, const i
 template <typename T>
 void insertionSortAscending(T* array, const int size, const int firstIndex, const int lastIndex)
 {
-	T temp; // временная переменная для хранения значения элемента сортируемого массива
-	int item; // индекс предыдущего элемента
+	T temp;
+	int item; 
 	for (int i = firstIndex + 1; i < lastIndex; i++)
 	{
-		temp = array[i]; // инициализируем временную переменную текущим значением элемента массива
-		item = i - 1; // запоминаем индекс предыдущего элемента массива
-		while (item >= 0 && array[item] > temp) // пока индекс не равен 0 и предыдущий элемент массива больше текущего
+		temp = array[i]; 
+		item = i - 1; 
+		while (item >= 0 && array[item] > temp) 
 		{
-			array[item + 1] = array[item]; // перестановка элементов массива
+			array[item + 1] = array[item];
 			array[item] = temp;
 			item--;
 		}
@@ -299,10 +366,8 @@ void chooseSortDescending(T* array, const int size, const int firstIndex, const 
 template <typename T>
 void arrayReverse(T* array, const int size, const int firstIndex, const int lastIndex)
 {
-	for (int i = firstIndex, counter = 0; i < lastIndex; i++, counter++)
+	for (int i = firstIndex, j = lastIndex - 1; i < j; i++, j--)
 	{
-		int temp = array[i];
-		array[i] = array[lastIndex - counter - 1];
-		array[lastIndex - counter - 1] = temp;
+		swap(array[i], array[j]);
 	}
 }
