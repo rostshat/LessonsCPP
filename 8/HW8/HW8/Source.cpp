@@ -70,7 +70,7 @@ int main()
 		cout << "1 -	Array reverse\n";
 		cout << "2 -	Reverse Coping\n";
 		cout << "3 -	Which number is bigger\n";
-		cout << "4 -	-20 to 20 Bubble Sort\n";
+		cout << "4 -	Positive or Negative number\n";
 		cout << "5 -	Pointer`s calculator\n";
 		cout << "6 -	Array`s elements summ\n";
 		cout << "0 -	Exit\n";
@@ -154,30 +154,35 @@ int main()
 					{
 						case '+':
 						{
+							cout << "Enter your number: ";
 							cin >> userNumber2;
 							getSumm(&userNumber2, &userNumber1);
 							break;
 						}
 						case '-':
 						{
+							cout << "Enter your number: ";
 							cin >> userNumber2;
 							getDifference(&userNumber2, &userNumber1);
 							break;
 						}
 						case '*':
 						{
+							cout << "Enter your number: ";
 							cin >> userNumber2;
 							getMultiply(&userNumber2, &userNumber1);
 							break;
 						}
 						case '/':
 						{
+							cout << "Enter your number: ";
 							cin >> userNumber2;
 							getFraction(&userNumber2, &userNumber1);
 							break;
 						}
 						case '%':
 						{
+							cout << "Enter your number: ";
 							cin >> userNumber2;
 							getResidue(&userNumber2, &userNumber1);
 							break;
@@ -189,6 +194,7 @@ int main()
 						}
 					}
 				}
+				break;
 			}
 			case '6':
 			{
