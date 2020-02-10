@@ -15,19 +15,6 @@
 
 using namespace std;
 
-void f1()
-{
-	int* dynamicVar = new int{ 4 };
-	cout << *dynamicVar << endl;
-	*dynamicVar = 5;
-	cout << *dynamicVar << endl;
-	delete dynamicVar;
-	//delete dynamicVar;  == dynamicVar = nullptr; --- Same things
-
-
-	cout << *dynamicVar << endl;
-}
-
 template <typename T>
 T getRandom(T min, T max, int order = 1);
 
@@ -45,8 +32,13 @@ template <typename T>
 void showArray(T* array, const int rows, const int cols);
 
 template <typename T>
-void pushArr(T*& array, int& size, const T element);
+void pushArrEnd(T*& array, int& size, const T element);
 
+template <typename T>
+void pushArrStart(T*& array, int& size, const T element);
+
+template <typename T>
+void pushArrByIndex(T*& array, int& size, const T element, const int *index);
 
 int main()
 {
@@ -59,7 +51,7 @@ int main()
 
 		cout << "1 - Push" << endl;
 		cout << "2 - Remove" << endl;
-		cout << "3 - Remove" << endl;
+		cout << "0 - Exit" << endl;
 		cin >> choise;
 
 		if (choise == '0') break;
@@ -68,9 +60,9 @@ int main()
 		{
 		case'1':
 		{
-			char taskChoise;
+			char taskChoise{};
 
-			while (true || taskChoise != '0')
+			while (taskChoise != '0')
 			{
 				cout << "1 - Push to the end" << endl;
 				cout << "2 - Push to the start" << endl;
@@ -92,10 +84,11 @@ int main()
 
 						if (arrType)
 						{
-							
+							/*Array entering*/
 						}
 						else
 						{
+							int* change = new int;
 							int* array = new int[size];
 
 							fillArray(array, size, MIN, MAX);
@@ -103,23 +96,96 @@ int main()
 							showArray(array, size);
 							WRAP;
 
-							cout << "Enter "
+							cout << "Enter your number ";
+							cin >> *change;
 
+							pushArrEnd(array, size, *change);
+							showArray(array, size);
+
+							delete[] array;
+							delete change;
 						}
+
 						break;
 					}
 					case'2':
 					{
+						int size = 10;
+						bool arrType;
+
+						cout << "Which array do you need?" << endl;
+						cout << "0 - Default generated array" << endl;
+						cout << "1 - Custom generated array" << endl;
+						cin >> arrType;
+
+						if (arrType)
+						{
+							/*Array entering*/
+						}
+						else
+						{
+							int* change = new int;
+							int* array = new int[size];
+
+							fillArray(array, size, MIN, MAX);
+							cout << "Generated array: ";
+							showArray(array, size);
+							WRAP;
+
+							cout << "Enter your number ";
+							cin >> *change;
+
+							pushArrStart(array, size, *change);
+							showArray(array, size);
+
+							delete[] array;
+							delete change;
+						}
 
 						break;
 					}
 					case'3':
 					{
+						int size = 10;
+						bool arrType;
+
+						cout << "Which array do you need?" << endl;
+						cout << "0 - Default generated array" << endl;
+						cout << "1 - Custom generated array" << endl;
+						cin >> arrType;
+
+						if (arrType)
+						{
+							/*Array entering*/
+						}
+						else
+						{
+							int* change = new int;
+							int* index = new int;
+							int* array = new int[size];
+
+							fillArray(array, size, MIN, MAX);
+							cout << "Generated array: ";
+							showArray(array, size);
+							WRAP;
+
+							cout << "Enter your number ";
+							cin >> *change;
+							cout << "Enter your index ";
+							cin >> *index;
+
+							pushArrByIndex(array, size, *change, index);
+							showArray(array, size);
+
+							delete[] array;
+							delete change;
+						}
 
 						break;
 					}
 					case'0':
 					{
+						taskChoise = '0';
 
 						break;
 					}
@@ -221,7 +287,7 @@ void swap(T* xp, T* yp)
 }
 
 template <typename T>
-void pushArr(T*& array, int& size, const T element)
+void pushArrEnd(T*& array, int& size, const T element)
 {
 	T* newArray = new T[size + 1]{};
 
@@ -237,5 +303,71 @@ void pushArr(T*& array, int& size, const T element)
 		delete[]array;
 
 		array = newArray;
+	}
+}
+
+template <typename T>
+void pushArrStart(T*& array, int& size, const T element)
+{
+	T* newArray = new T[size + 1]{};
+
+	if (newArray)
+	{
+		size++;
+		*(newArray) = element;
+
+		for (int i = 0; i < size; i++)
+		{
+			*(newArray + i + 1) = *(array + i);
+		}
+
+		delete[]array;
+
+		array = newArray;
+	}
+}
+
+template <typename T>
+void pushArrByIndex(T*& array, int& size, const T element, const int *index)
+{
+	T* newArray = new T[size + 1]{};
+
+	if (newArray)
+	{
+		if (*index >= size)
+		{
+			pushArrEnd(array, size, element);
+		}
+		else if (*index <= 0)
+		{
+			pushArrStart(array, size, element);
+		}
+		else
+		{
+			size++;
+
+			for (int i = 0; i < size; i++)
+			{
+				if (i >= *index)
+				{
+					if (i == *index)
+					{
+						*(newArray + i) = element;
+					}
+					else
+					{
+						*(newArray + i) = *(array + i - 1);
+					}
+				}
+				else
+				{
+					*(newArray + i) = *(array + i);
+				}				
+			}
+
+			delete[]array;
+
+			array = newArray;
+		}
 	}
 }
