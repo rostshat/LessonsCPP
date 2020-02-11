@@ -38,7 +38,10 @@ template <typename T>
 void pushArrStart(T*& array, int& size, const T element);
 
 template <typename T>
-void pushArrByIndex(T*& array, int& size, const T element, const int *index);
+void pushArrByIndex(T*& array, int& size, const T element, const int index);
+
+template <typename T>
+void maluallyFillArray(T*& array, int& size);
 
 int main()
 {
@@ -84,7 +87,23 @@ int main()
 
 						if (arrType)
 						{
-							/*Array entering*/
+							int* change = new int;
+							int* array = new int[size];
+
+							maluallyFillArray(array, size);
+							LINE;
+							showArray(array, size);
+
+							WRAP;
+
+							cout << "Enter your number ";
+							cin >> *change;
+
+							pushArrEnd(array, size, *change);
+							showArray(array, size);
+
+							delete[] array;
+							delete change;
 						}
 						else
 						{
@@ -105,7 +124,7 @@ int main()
 							delete[] array;
 							delete change;
 						}
-
+						LINE;
 						break;
 					}
 					case'2':
@@ -120,7 +139,23 @@ int main()
 
 						if (arrType)
 						{
-							/*Array entering*/
+							int* change = new int;
+							int* array = new int[size];
+
+							maluallyFillArray(array, size);
+							LINE;
+							showArray(array, size);
+
+							WRAP;
+
+							cout << "Enter your number ";
+							cin >> *change;
+
+							pushArrStart(array, size, *change);
+							showArray(array, size);
+
+							delete[] array;
+							delete change;
 						}
 						else
 						{
@@ -141,7 +176,7 @@ int main()
 							delete[] array;
 							delete change;
 						}
-
+						LINE;
 						break;
 					}
 					case'3':
@@ -156,7 +191,27 @@ int main()
 
 						if (arrType)
 						{
-							/*Array entering*/
+							int* change = new int;
+							int* index = new int;
+							int* array = new int[size];
+
+							maluallyFillArray(array, size);
+							LINE;
+							showArray(array, size);
+
+							WRAP;
+
+							cout << "Enter your number ";
+							cin >> *change;
+							cout << "Enter your index ";
+							cin >> *index;
+
+							pushArrByIndex(array, size, *change, *index);
+							showArray(array, size);
+
+							delete[] array;
+							delete change;
+							delete index;
 						}
 						else
 						{
@@ -174,13 +229,14 @@ int main()
 							cout << "Enter your index ";
 							cin >> *index;
 
-							pushArrByIndex(array, size, *change, index);
+							pushArrByIndex(array, size, *change, *index);
 							showArray(array, size);
 
 							delete[] array;
 							delete change;
+							delete index;
 						}
-
+						LINE;
 						break;
 					}
 					case'0':
@@ -328,17 +384,17 @@ void pushArrStart(T*& array, int& size, const T element)
 }
 
 template <typename T>
-void pushArrByIndex(T*& array, int& size, const T element, const int *index)
+void pushArrByIndex(T*& array, int& size, const T element, int index)
 {
 	T* newArray = new T[size + 1]{};
 
 	if (newArray)
 	{
-		if (*index >= size)
+		if (index >= size)
 		{
 			pushArrEnd(array, size, element);
 		}
-		else if (*index <= 0)
+		else if (index <= 0)
 		{
 			pushArrStart(array, size, element);
 		}
@@ -348,9 +404,9 @@ void pushArrByIndex(T*& array, int& size, const T element, const int *index)
 
 			for (int i = 0; i < size; i++)
 			{
-				if (i >= *index)
+				if (i >= index)
 				{
-					if (i == *index)
+					if (i == index)
 					{
 						*(newArray + i) = element;
 					}
@@ -369,5 +425,20 @@ void pushArrByIndex(T*& array, int& size, const T element, const int *index)
 
 			array = newArray;
 		}
+	}
+}
+
+
+template <typename T>
+void maluallyFillArray(T*& array, int& size)
+{
+	T temp;
+	cout << "Fill your array: \n";
+	for (int i = 0; i < size; i++)
+	{
+		cout << i << ": ";
+		cin >> temp;
+
+		*(array + i) = temp;
 	}
 }
