@@ -50,6 +50,15 @@ void pushNArrStart(T*& array, int& size, const int numberOfElements);
 template <typename T>
 void pushNArrByIndex(T*& array, int& size, const int numberOfElements, const int index);
 
+template <typename T>
+void removeNArrEnd(T*& array, int& size, const int numberOfElements);
+
+template <typename T>
+void removeNArrStart(T*& array, int& size, const int numberOfElements);
+
+template <typename T>
+void removeNArrByIndex(T*& array, int& size, const int numberOfElements, const int index);
+
 int main()
 {
 	srand(time(NULL));
@@ -62,7 +71,7 @@ int main()
 		cout << "1 - Push 1 element" << endl;
 		cout << "2 - Remove 1 element" << endl;
 		cout << "3 - Push N elements" << endl;
-		cout << "3 - Remove N elements" << endl;
+		cout << "4 - Remove N elements" << endl;
 		cout << "0 - Exit" << endl;
 		cin >> choise;
 
@@ -671,7 +680,7 @@ int main()
 						cout << "Enter your number of elements ";
 						cin >> *numberOfElements;
 
-						pushNArrEnd(array, size, *numberOfElements);
+						removeNArrEnd(array, size, *numberOfElements);
 						showArray(array, size);
 
 						delete[] array;
@@ -690,7 +699,7 @@ int main()
 						cout << "Enter your number of elements ";
 						cin >> *numberOfElements;
 
-						pushNArrEnd(array, size, *numberOfElements);
+						removeNArrEnd(array, size, *numberOfElements);
 						showArray(array, size);
 
 						delete[] array;
@@ -725,7 +734,7 @@ int main()
 							cout << "Enter your number of elements ";
 							cin >> *numberOfElements;
 
-							pushNArrStart(array, size, *numberOfElements);
+							removeNArrStart(array, size, *numberOfElements);
 							showArray(array, size);
 
 							delete[] array;
@@ -744,7 +753,7 @@ int main()
 							cout << "Enter your number of elements ";
 							cin >> *numberOfElements;
 
-							pushNArrStart(array, size, *numberOfElements);
+							removeNArrStart(array, size, *numberOfElements);
 							showArray(array, size);
 
 							delete[] array;
@@ -783,7 +792,7 @@ int main()
 							cout << "Enter your number of elements ";
 							cin >> *numberOfElements;
 
-							pushNArrByIndex(array, size, *numberOfElements, *index);
+							removeNArrByIndex(array, size, *numberOfElements, *index);
 							showArray(array, size);
 
 							delete[] array;
@@ -806,7 +815,7 @@ int main()
 							cout << "Enter your number of elements ";
 							cin >> *numberOfElements;
 
-							pushNArrByIndex(array, size, *numberOfElements, *index);
+							removeNArrByIndex(array, size, *numberOfElements, *index);
 							showArray(array, size);
 
 							delete[] array;
@@ -1064,7 +1073,6 @@ template <typename T>
 void pushNArrByIndex(T*& array, int& size, const int numberOfElements, const int index)
 {
 	T* newArray = new T[size + numberOfElements]{};
-	int* temp = new int;
 
 	if (newArray)
 	{
@@ -1087,7 +1095,7 @@ void pushNArrByIndex(T*& array, int& size, const int numberOfElements, const int
 
 			for (int i = index; i < numberOfElements; i++)
 			{
-				*(newArray + i) = getRandom(MIN, MAX);
+				*(newArray + i) = getRandom(MIN, MAX); //FIX
 			}
 
 			for (int i = index + numberOfElements,j = index ; i < size; i++, j++)
@@ -1096,37 +1104,80 @@ void pushNArrByIndex(T*& array, int& size, const int numberOfElements, const int
 			}
 
 			delete[]array;
-			delete temp;
 
 			array = newArray;
 		}
 	}
 }
 
-//template <typename T>
-//void removeNArrEnd(T*& array, int& size, const int numberOfElements)
-//{
-//	T* newArray = new T[size + numberOfElements]{};
-//	int* newSize = new int;
-//
-//	if (newArray)
-//	{
-//		for (int i = 0; i < size; i++)
-//		{
-//			*(newArray + i) = *(array + i);
-//		}
-//
-//		*newSize = size + numberOfElements;
-//
-//		for (int i = size; i < *newSize; i++)
-//		{
-//			*(newArray + i) = getRandom(MIN, MAX);
-//		}
-//		size += numberOfElements;
-//
-//		delete[]array;
-//		delete newSize;
-//
-//		array = newArray;
-//	}
-//}
+template <typename T>
+void removeNArrEnd(T*& array, int& size, const int numberOfElements)
+{
+	T* newArray = new T[size + numberOfElements]{};
+
+	if (newArray)
+	{
+		for (int i = 0; i < size - numberOfElements; i++)
+		{
+			*(newArray + i) = *(array + i);
+		}
+		size -= numberOfElements;
+
+		delete[]array;
+
+		array = newArray;
+	}
+}
+
+template <typename T>
+void removeNArrStart(T*& array, int& size, const int numberOfElements)
+{
+	T* newArray = new T[size + numberOfElements]{};
+
+	if (newArray)
+	{
+		for (int i = 0; i < size - numberOfElements; i++)
+		{
+			*(newArray + i) = *(array + numberOfElements + i);
+		}
+		size -= numberOfElements;
+
+		delete[]array;
+
+		array = newArray;
+	}
+}
+
+template <typename T>
+void removeNArrByIndex(T*& array, int& size, const int numberOfElements, const int index)
+{
+	T* newArray = new T[size + numberOfElements]{};
+
+	if (newArray)
+	{
+		if (index >= size)
+		{
+			removeNArrEnd(array, size, numberOfElements);
+		}
+		else if (index <= ARRAY_START)
+		{
+			removeNArrStart(array, size, numberOfElements);
+		}
+		else
+		{
+			for (int i = 0; i < index; i++)
+			{
+				*(newArray + i) = *(array + i);
+			}
+			for (int i = index + numberOfElements, j = index; i < size; i++, j++)
+			{
+				*(newArray + j) = *(array + i);
+			}
+			size -= numberOfElements;
+		}
+
+		delete[]array;
+
+		array = newArray;
+	}
+}
