@@ -677,8 +677,11 @@ int main()
 
 						WRAP;
 
-						cout << "Enter your number of elements ";
-						cin >> *numberOfElements;
+						do
+						{
+							cout << "Enter your number of elements ";
+							cin >> *numberOfElements;
+						} while (*numberOfElements > size);
 
 						removeNArrEnd(array, size, *numberOfElements);
 						showArray(array, size);
@@ -696,8 +699,11 @@ int main()
 						showArray(array, size);
 						WRAP;
 
-						cout << "Enter your number of elements ";
-						cin >> *numberOfElements;
+						do
+						{
+							cout << "Enter your number of elements ";
+							cin >> *numberOfElements;
+						} while (*numberOfElements > size);
 
 						removeNArrEnd(array, size, *numberOfElements);
 						showArray(array, size);
@@ -731,8 +737,11 @@ int main()
 
 							WRAP;
 
-							cout << "Enter your number of elements ";
-							cin >> *numberOfElements;
+							do
+							{
+								cout << "Enter your number of elements ";
+								cin >> *numberOfElements;
+							} while (*numberOfElements > size);
 
 							removeNArrStart(array, size, *numberOfElements);
 							showArray(array, size);
@@ -750,8 +759,11 @@ int main()
 							showArray(array, size);
 							WRAP;
 
-							cout << "Enter your number of elements ";
-							cin >> *numberOfElements;
+							do
+							{
+								cout << "Enter your number of elements ";
+								cin >> *numberOfElements;
+							} while (*numberOfElements > size);
 
 							removeNArrStart(array, size, *numberOfElements);
 							showArray(array, size);
@@ -789,8 +801,11 @@ int main()
 
 							cout << "Enter your index ";
 							cin >> *index;
-							cout << "Enter your number of elements ";
-							cin >> *numberOfElements;
+							do
+							{
+								cout << "Enter your number of elements ";
+								cin >> *numberOfElements;
+							} while (*numberOfElements > size);
 
 							removeNArrByIndex(array, size, *numberOfElements, *index);
 							showArray(array, size);
@@ -812,8 +827,12 @@ int main()
 
 							cout << "Enter your index ";
 							cin >> *index;
-							cout << "Enter your number of elements ";
-							cin >> *numberOfElements;
+
+							do
+							{
+								cout << "Enter your number of elements ";
+								cin >> *numberOfElements;
+							} while (*numberOfElements > size);
 
 							removeNArrByIndex(array, size, *numberOfElements, *index);
 							showArray(array, size);
