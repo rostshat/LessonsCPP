@@ -19,15 +19,16 @@ using namespace std;
 template <typename T>
 T getRandom(T min, T max, int order = 1);
 
-template <typename T>
-void deleteUnit(T*& line, const int index);
+void deleteUnitByIndex(char*& line, const int pos);
+char* deleteUnitByName(char* s, int k);
+char* insert(char* source, int index, char symbol);
 
 int main()
 {
 	srand(time(NULL));
 	char* taskNum = new char;
 
-	while (true || *taskNum != '0')
+	while (true && *taskNum != '0')
 	{
 		system("cls");
 
@@ -44,69 +45,112 @@ int main()
 
 		switch (*taskNum)
 		{
-		case'1':
-		{
-			char* line = new char[DEFAULT_LINE_SIZE];
-			int* index = new int;
-
-			if (line)
+			case'1':
 			{
-				cin.ignore(1, '\n');
-				cout << "Enter your line: ";
-				gets_s(line, DEFAULT_LINE_SIZE);
-				cout << line << endl;
+				char* line = new char[DEFAULT_LINE_SIZE];
+				int* index = new int;
 
-				cout << "Enter number of units for deleting: ";
-				cin >> *index;
+				if (line)
+				{
+					cin.ignore(1, '\n');
+					cout << "Enter your line: ";
+					gets_s(line, DEFAULT_LINE_SIZE);
+					cout << line << endl;
 
-				deleteUnit(line, *index);
-				cout << line;
+					cout << "Enter the index of unit for deleting: ";
+					cin >> *index;
 
-				delete index;
-				delete[] line;
+					deleteUnitByIndex(line, *index);
+					cout << line << endl;
+
+					delete index;
+					delete[] line;
+				}
+
+				break;
 			}
+			case '2':
+			{
+				char* line = new char[DEFAULT_LINE_SIZE];
+				char* symbol = new char;
 
-			break;
-		}
-		case '2':
-		{
-			
-			break;
-		}
-		case '3':
-		{
+				if (line)
+				{
+					cin.ignore(1, '\n');
+					cout << "Enter your line: ";
+					gets_s(line, DEFAULT_LINE_SIZE);
+					cout << line << endl;
 
-			break;
-		}
-		case '4':
-		{
+					cout << "Enter your symbol for deleting: ";
+					cin >> *symbol;
 
-			break;
-		}
-		case '5':
-		{
+					deleteUnitByName(line, *symbol);
+					cout << line << endl;
 
-			break;
-		}
-		case '6':
-		{
+					delete symbol;
+					delete[] line;
+				}
 
-			break;
-		}
-		case '7':
-		{
+				break;
+			}
+			case '3':
+			{
+				char* line = new char[DEFAULT_LINE_SIZE];
+				char* symbol = new char;
+				int* index = new int;
 
-			break;
-		}
-		case '8':
-		{
+				if (line)
+				{
+					cin.ignore(1, '\n');
+					cout << "Enter your line: ";
+					gets_s(line, DEFAULT_LINE_SIZE);
+					cout << line << endl;
 
-			break;
-		}
-		default:
-		{
-			break;
-		}
+					cout << "Enter your symbol for inserting: ";
+					cin >> *symbol;
+
+					cout << "Enter your index for inserting: ";
+					cin >> *index;
+
+					//insert(line, line, *index, *symbol);					
+					cout << line << endl;
+
+					delete symbol;
+					delete index;
+					delete[] line;
+				}
+
+				break;
+			}
+			case '4':
+			{
+
+				break;
+			}
+			case '5':
+			{
+
+				break;
+			}
+			case '6':
+			{
+
+				break;
+			}
+			case '7':
+			{
+
+				break;
+			}
+			case '8':
+			{
+
+				break;
+			}
+			default:
+			{
+				break;
+			}
 		}
 		system("pause");
 	}
@@ -120,22 +164,63 @@ T getRandom(T min, T max, int order)
 	return (T)(rand() % (((int)max - (int)min) * order) + min * order) / order;
 }
 
-template <typename T>
-void deleteUnit(T *&line, const int index)
+void deleteUnitByIndex(char*& line, const int index)
 {
+	if (strlen(line) < index)
+		return;
+
 	char* newLine = new char[strlen(line)];
-	
+
 	if (newLine)
 	{
-		int i = 0;
-		while (*(line + i) != '\0')
+		for (int i = 0, j = 0; i < strlen(line); ++i, j++)
 		{
-			*(newLine + i) = *(line + i);
+			if (i != index)
+			{
+				*(newLine + j) = *(line + i);
+			}
+			else
+			{
+				--j;
+			}
 		}
-		*(newLine + i) = '\0';
 
+		newLine[strlen(line) - 1] = '\0';
+
+		delete[] line;
 		line = newLine;
-
-		delete[] newLine;
 	}
+}
+
+char* deleteUnitByName(char* s, char k)
+{
+	int i = 0;
+	int	j = 0;
+	while (*(s + i) != '\0')
+	{
+		if (*(s + i) != k)
+		{
+			*(s + j + 1) = *(s + i);
+		}			
+		i++;
+	}
+	*(s + j) = '\0';
+
+	return s;
+}
+
+char* insert(char* source, int index, char symbol) 
+	{
+	if (0 > index || index > strlen(source))
+	{
+		return source;
+	}
+
+	int i = 0;
+	while (*(source + i) != '\0')
+	{
+
+	}
+
+	return source;
 }
