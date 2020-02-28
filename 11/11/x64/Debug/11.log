@@ -1,0 +1,3 @@
+﻿  Source.cpp
+R:\CPP\ITStep\LessonsCPP\11\11\Source.cpp(43,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  11.vcxproj -> R:\CPP\ITStep\LessonsCPP\11\x64\Debug\11.exe
