@@ -38,6 +38,9 @@ bool addColumnByIndex(T**& ptr2DArr, const int rows, int *cols, const int index,
 template <typename T>
 bool deleteRowByIndex(T**& ptr2DArr, int* rows, const int cols, const int index, const T min, const T max, const int order =  1);
 
+template <typename T>
+bool addNumber(T**& ptrContacts, int rows, const int cols);
+
 int main()
 {
 	srand(time(NULL));
@@ -64,7 +67,7 @@ int main()
 		{
 			int* sizeRows = new int{0};
 			int* sizeCols = new int{0};
-			int* width = new int;
+			int width;
 			int index{};
 
 			cout << "Rows: ";
@@ -72,7 +75,7 @@ int main()
 			cout << "Cols: ";
 			cin >> *sizeCols;
 			cout << "Width for printing: ";
-			cin >> *width;
+			cin >> width;
 
 			int** ptr2DArr = nullptr;
 			bool exist = createArr2D(ptr2DArr, *sizeRows, *sizeCols);
@@ -80,20 +83,19 @@ int main()
 			if (exist)
 			{
 				fillArr2D(ptr2DArr, *sizeRows, *sizeCols, MIN, MAX, 1);
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, *width);				
+				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);				
 
 				cout << "Index for adding: ";
 				cin >> index;
 
 				addRowByIndex(ptr2DArr, sizeRows, *sizeCols, index, MIN, MAX);
 				LINE;
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, *width);
+				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 				deleteArr2D(ptr2DArr, *sizeRows);
 			}
 
 			delete sizeRows;
 			delete sizeCols;
-			delete width;
 
 			break;
 		}
@@ -101,7 +103,7 @@ int main()
 		{
 			int* sizeRows = new int{ 0 };
 			int* sizeCols = new int{ 0 };
-			int* width = new int;
+			int width;
 			int index{};
 
 			cout << "Rows: ";
@@ -109,7 +111,7 @@ int main()
 			cout << "Cols: ";
 			cin >> *sizeCols;
 			cout << "Width for printing: ";
-			cin >> *width;
+			cin >> width;
 			cout << "Enter your index: ";
 			cin >> index;
 
@@ -119,16 +121,15 @@ int main()
 			if (exist)
 			{
 				fillArr2D(ptr2DArr, *sizeRows, *sizeCols, MIN, MAX, 1);
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, *width);
+				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 
 				addColumnByIndex(ptr2DArr, *sizeRows, sizeCols, index, MIN, MAX);
 				LINE;
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, *width);
+				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 				deleteArr2D(ptr2DArr, *sizeRows);
 			}
 
 			delete sizeRows;
-			delete width;
 			delete sizeCols;
 
 			break;
@@ -137,7 +138,7 @@ int main()
 		{
 			int* sizeRows = new int{ 0 };
 			int* sizeCols = new int{ 0 };
-			int* width = new int;
+			int width;
 			int index{};
 
 			cout << "Rows: ";
@@ -145,7 +146,7 @@ int main()
 			cout << "Cols: ";
 			cin >> *sizeCols;
 			cout << "Width for printing: ";
-			cin >> *width;
+			cin >> width;
 			cout << "Enter your index: ";
 			cin >> index;
 
@@ -155,25 +156,29 @@ int main()
 			if (exist)
 			{
 				fillArr2D(ptr2DArr, *sizeRows, *sizeCols, MIN, MAX, 1);
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, *width);
+				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 
 				deleteRowByIndex(ptr2DArr, sizeRows, *sizeCols, index, MIN, MAX);
 				LINE;
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, *width);
+				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 				deleteArr2D(ptr2DArr, *sizeRows);
 			}
 
 			delete sizeRows;
-			delete width;
-			delete sizeCols;
-
-			break;
+			delete sizeCols;			
 
 			break;
 		}
 		case '4':
 		{
+			const int MAX_LENGTH = 20;
+			const int NUMBER_OF_ROWS = 2;			
 
+
+			int** contactsBook = nullptr;
+
+			bool exist = createArr2D(contactsBook,NUMBER_OF_ROWS , MAX_LENGTH);
+			
 
 			break;
 		}
@@ -414,4 +419,11 @@ bool deleteRowByIndex(T**& ptr2DArr, int* rows, const int cols, const int index,
 		}
 	}
 	return false;
+}
+
+/*CONTACTS*/
+template <typename T>
+bool addNumber(T**& ptrContacts, int *rows, const int cols)
+{
+	
 }

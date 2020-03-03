@@ -1,9 +1,7 @@
 ﻿  Source.cpp
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(28,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(169,19): warning C4018: '<': signed/unsigned mismatch
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(176,28): warning C4018: '<': signed/unsigned mismatch
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(214,25): warning C4018: '>': signed/unsigned mismatch
-Source.obj : error LNK2019: unresolved external symbol "char * __cdecl deleteUnitByName(char *,int)" (?deleteUnitByName@@YAPADPADH@Z) referenced in function _main
-    Hint on symbols that are defined and could potentially match:
-      "char * __cdecl deleteUnitByName(char *,char)" (?deleteUnitByName@@YAPADPADD@Z)
-R:\CPP\ITStep\LessonsCPP\10\Debug\10.exe : fatal error LNK1120: 1 unresolved externals
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(27,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(144,19): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(151,28): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(173,20): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(182,28): warning C4018: '<': signed/unsigned mismatch
+  10.vcxproj -> R:\CPP\ITStep\LessonsCPP\10\Debug\10.exe

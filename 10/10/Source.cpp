@@ -20,8 +20,7 @@ template <typename T>
 T getRandom(T min, T max, int order = 1);
 
 void deleteUnitByIndex(char*& line, const int pos);
-char* deleteUnitByName(char* s, int k);
-char* insert(char* source, int index, char symbol);
+bool deleteUnitByName(char*& line, const char symbol);
 
 int main()
 {
@@ -48,7 +47,7 @@ int main()
 			case'1':
 			{
 				char* line = new char[DEFAULT_LINE_SIZE];
-				int* index = new int;
+				int index;
 
 				if (line)
 				{
@@ -58,12 +57,11 @@ int main()
 					cout << line << endl;
 
 					cout << "Enter the index of unit for deleting: ";
-					cin >> *index;
+					cin >> index;
 
-					deleteUnitByIndex(line, *index);
+					deleteUnitByIndex(line, index);
 					cout << line << endl;
 
-					delete index;
 					delete[] line;
 				}
 
@@ -72,7 +70,7 @@ int main()
 			case '2':
 			{
 				char* line = new char[DEFAULT_LINE_SIZE];
-				char* symbol = new char;
+				char symbol;
 
 				if (line)
 				{
@@ -81,44 +79,21 @@ int main()
 					gets_s(line, DEFAULT_LINE_SIZE);
 					cout << line << endl;
 
-					cout << "Enter your symbol for deleting: ";
-					cin >> *symbol;
+					cout << "Enter the symbol of unit for deleting: ";
+					cin >> symbol;
 
-					deleteUnitByName(line, *symbol);
+					deleteUnitByName(line, symbol);
 					cout << line << endl;
 
-					delete symbol;
 					delete[] line;
 				}
+
 
 				break;
 			}
 			case '3':
 			{
-				char* line = new char[DEFAULT_LINE_SIZE];
-				char* symbol = new char;
-				int* index = new int;
-
-				if (line)
-				{
-					cin.ignore(1, '\n');
-					cout << "Enter your line: ";
-					gets_s(line, DEFAULT_LINE_SIZE);
-					cout << line << endl;
-
-					cout << "Enter your symbol for inserting: ";
-					cin >> *symbol;
-
-					cout << "Enter your index for inserting: ";
-					cin >> *index;
-
-					//insert(line, line, *index, *symbol);					
-					cout << line << endl;
-
-					delete symbol;
-					delete index;
-					delete[] line;
-				}
+				
 
 				break;
 			}
@@ -192,35 +167,36 @@ void deleteUnitByIndex(char*& line, const int index)
 	}
 }
 
-char* deleteUnitByName(char* s, char k)
+bool deleteUnitByName(char*& line, const char symbol)
 {
-	int i = 0;
-	int	j = 0;
-	while (*(s + i) != '\0')
+	int counter{};
+	for (int i = 0; i < strlen(line); i++)
 	{
-		if (*(s + i) != k)
+		if (line[i] == symbol) counter++;
+	}
+
+	char* newLine = new char[strlen(line) - counter];
+
+	if (newLine)
+	{
+		for (int i = 0, j = 0; i < strlen(line); ++i, j++)
 		{
-			*(s + j + 1) = *(s + i);
-		}			
-		i++;
+			if (i != symbol)
+			{
+				*(newLine + j) = *(line + i);
+			}
+			else
+			{
+				--j;
+			}
+		}
+
+		newLine[strlen(line) - 1] = '\0';
+
+		delete[] line;
+		line = newLine;
+
+		return true;
 	}
-	*(s + j) = '\0';
-
-	return s;
-}
-
-char* insert(char* source, int index, char symbol) 
-	{
-	if (0 > index || index > strlen(source))
-	{
-		return source;
-	}
-
-	int i = 0;
-	while (*(source + i) != '\0')
-	{
-
-	}
-
-	return source;
+	return false;
 }
