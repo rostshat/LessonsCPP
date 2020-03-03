@@ -1,7 +1,13 @@
 ﻿  Source.cpp
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(27,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(144,19): warning C4018: '<': signed/unsigned mismatch
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(151,28): warning C4018: '<': signed/unsigned mismatch
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(173,20): warning C4018: '<': signed/unsigned mismatch
-R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(182,28): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(32,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(229,19): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(236,28): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(258,20): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(265,27): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(284,19): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(291,21): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(319,20): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(326,20): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(344,20): warning C4018: '<': signed/unsigned mismatch
+R:\CPP\ITStep\LessonsCPP\10\10\Source.cpp(314): warning C4715: 'addUnitByIndex': not all control paths return a value
   10.vcxproj -> R:\CPP\ITStep\LessonsCPP\10\Debug\10.exe
