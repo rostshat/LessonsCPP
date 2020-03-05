@@ -88,9 +88,17 @@ int main()
 				cout << "Index for adding: ";
 				cin >> index;
 
-				addRowByIndex(ptr2DArr, sizeRows, *sizeCols, index, MIN, MAX);
-				LINE;
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
+				if (index < *sizeRows && index >= 0)
+				{
+					addRowByIndex(ptr2DArr, sizeRows, *sizeCols, index, MIN, MAX);
+					LINE;
+					showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
+				}
+				else
+				{
+					cout << "Error" << endl;
+				}
+
 				deleteArr2D(ptr2DArr, *sizeRows);
 			}
 
@@ -123,9 +131,17 @@ int main()
 				fillArr2D(ptr2DArr, *sizeRows, *sizeCols, MIN, MAX, 1);
 				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 
-				addColumnByIndex(ptr2DArr, *sizeRows, sizeCols, index, MIN, MAX);
-				LINE;
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
+				if (index < *sizeCols && index >= 0)
+				{
+					addColumnByIndex(ptr2DArr, *sizeRows, sizeCols, index, MIN, MAX);
+					LINE;
+					showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
+				}
+				else
+				{
+					cout << "Error\n";
+				}
+
 				deleteArr2D(ptr2DArr, *sizeRows);
 			}
 
@@ -158,9 +174,16 @@ int main()
 				fillArr2D(ptr2DArr, *sizeRows, *sizeCols, MIN, MAX, 1);
 				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
 
-				deleteRowByIndex(ptr2DArr, sizeRows, *sizeCols, index, MIN, MAX);
-				LINE;
-				showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
+				if (index >= 0 && index < *sizeRows)
+				{
+					deleteRowByIndex(ptr2DArr, sizeRows, *sizeCols, index, MIN, MAX);
+					LINE;
+					showArr2D(ptr2DArr, *sizeRows, *sizeCols, width);
+				}
+				else
+				{
+					cout << "Error\n";
+				}
 				deleteArr2D(ptr2DArr, *sizeRows);
 			}
 
@@ -171,14 +194,63 @@ int main()
 		}
 		case '4':
 		{
-			const int MAX_LENGTH = 20;
-			const int NUMBER_OF_ROWS = 2;			
+			const int NUMBER_OF_ROWS = 2;
+			const int NUMBER_OF_COLS = 1;
 
+			int numberOfContacts{};
+			char operation{};
 
 			int** contactsBook = nullptr;
 
-			bool exist = createArr2D(contactsBook,NUMBER_OF_ROWS , MAX_LENGTH);
+			bool exist = createArr2D(contactsBook,NUMBER_OF_ROWS , NUMBER_OF_COLS);
 			
+			
+
+			while (true && operation != '0')
+			{
+				cout << "Enter your task number: \n";
+				cout << "1 - Add number \n";
+				cout << "2 - Delete number \n";
+				cout << "3 - Search by number \n";
+				cout << "4 - Search by contact name \n";
+				cout << "5 - Show numbers \n";
+				cout << "0 - Exit \n";
+				cin >> operation;
+
+				switch (operation)
+				{
+					case '1':
+					{
+
+
+						break;
+					}
+					case '2':
+					{
+
+						break;
+					}
+					case '3':
+					{
+
+						break;
+					}
+					case '4':
+					{
+
+						break;
+					}
+					case '5':
+					{
+
+						break;
+					}
+					default:
+					{
+						break;
+					}
+				}
+			}
 
 			break;
 		}
@@ -293,7 +365,7 @@ bool addRowByIndex(T** &ptr2DArr, int *rows, const int cols, const int index, co
 	{
 		T** newPtr2DArr = new T * [*rows + 1];
 
-		if (newPtr2DArr)
+		if(newPtr2DArr)
 		{	
 			*(newPtr2DArr + index) = new T[cols]{};
 
@@ -423,7 +495,18 @@ bool deleteRowByIndex(T**& ptr2DArr, int* rows, const int cols, const int index,
 
 /*CONTACTS*/
 template <typename T>
-bool addNumber(T**& ptrContacts, int *rows, const int cols)
+bool addNumber(T**& ptrContacts, const int rows, int *cols, int *counter)
 {
-	
+	const int MAX_NAME_LENGTH = 20;
+	const int MAX_NUMBER_LENGTH = 13;
+
+	char* name = new char[MAX_NAME_LENGTH];
+	char* number = new char[MAX_NUMBER_LENGTH];
+
+	cout << "Enter your name: \n";
+	gets_s(name, MAX_NAME_LENGTH);
+	cout << "Enter your number: \n";
+	gets_s(number, MAX_NUMBER_LENGTH);
+
+
 }

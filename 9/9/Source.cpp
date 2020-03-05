@@ -1188,9 +1188,10 @@ void removeNArrByIndex(T*& array, int& size, const int numberOfElements, const i
 			{
 				*(newArray + i) = *(array + i);
 			}
-			for (int i = index + numberOfElements, j = index; i < size; i++, j++)
+			for (int i = index, j = index + numberOfElements; i < j; i++)
 			{
-				*(newArray + j) = *(array + i);
+				if (i == size) break;
+				*(newArray + i) = *(array + j);
 			}
 			size -= numberOfElements;
 		}
