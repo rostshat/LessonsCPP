@@ -832,7 +832,7 @@ int main()
 							{
 								cout << "Enter your number of elements ";
 								cin >> *numberOfElements;
-							} while (*numberOfElements > size);
+							} while (*numberOfElements > size || *numberOfElements + *index > size || *index > size);
 
 							removeNArrByIndex(array, size, *numberOfElements, *index);
 							showArray(array, size);
@@ -1170,7 +1170,7 @@ void removeNArrStart(T*& array, int& size, const int numberOfElements)
 template <typename T>
 void removeNArrByIndex(T*& array, int& size, const int numberOfElements, const int index)
 {
-	T* newArray = new T[size + numberOfElements]{};
+	T* newArray = new T[size - numberOfElements]{};
 
 	if (newArray)
 	{
@@ -1188,10 +1188,15 @@ void removeNArrByIndex(T*& array, int& size, const int numberOfElements, const i
 			{
 				*(newArray + i) = *(array + i);
 			}
-			for (int i = index, j = index + numberOfElements; i < j; i++)
+
+			for (int i = index; i < index + numberOfElements; i++)
 			{
-				if (i == size) break;
-				*(newArray + i) = *(array + j);
+				*(newArray + i) = *(array + index + i);				
+			}
+
+			for (int i = index + numberOfElements, j = index; i < size; i++, j++)
+			{
+				*(newArray + j) = *(array + i);
 			}
 			size -= numberOfElements;
 		}

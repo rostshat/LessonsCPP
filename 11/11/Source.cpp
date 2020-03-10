@@ -38,8 +38,11 @@ bool addColumnByIndex(T**& ptr2DArr, const int rows, int *cols, const int index,
 template <typename T>
 bool deleteRowByIndex(T**& ptr2DArr, int* rows, const int cols, const int index, const T min, const T max, const int order =  1);
 
-template <typename T>
-bool addNumber(T**& ptrContacts, int rows, const int cols);
+struct Contact
+{
+	char* name;
+	char* number;
+};
 
 int main()
 {
@@ -200,10 +203,7 @@ int main()
 			int numberOfContacts{};
 			char operation{};
 
-			int** contactsBook = nullptr;
-
-			bool exist = createArr2D(contactsBook,NUMBER_OF_ROWS , NUMBER_OF_COLS);
-			
+			int* contactsBook = nullptr;						
 			
 
 			while (true && operation != '0')
@@ -251,26 +251,6 @@ int main()
 					}
 				}
 			}
-
-			break;
-		}
-		case '5':
-		{
-
-			break;
-		}
-		case '6':
-		{
-
-			break;
-		}
-		case '7':
-		{
-
-			break;
-		}
-		case '8':
-		{
 
 			break;
 		}
@@ -495,13 +475,10 @@ bool deleteRowByIndex(T**& ptr2DArr, int* rows, const int cols, const int index,
 
 /*CONTACTS*/
 template <typename T>
-bool addNumber(T**& ptrContacts, const int rows, int *cols, int *counter)
+bool addNumber(T**& ptrContacts, int *counter)
 {
 	const int MAX_NAME_LENGTH = 20;
-	const int MAX_NUMBER_LENGTH = 13;
-
-	char* name = new char[MAX_NAME_LENGTH];
-	char* number = new char[MAX_NUMBER_LENGTH];
+	const int MAX_NUMBER_LENGTH = 13;	
 
 	cout << "Enter your name: \n";
 	gets_s(name, MAX_NAME_LENGTH);
