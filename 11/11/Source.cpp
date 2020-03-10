@@ -203,7 +203,7 @@ int main()
 			int numberOfContacts{};
 			char operation{};
 
-			int* contactsBook = nullptr;						
+			Contact* contactsBook = new Contact[1];						
 			
 
 			while (true && operation != '0')
@@ -221,7 +221,7 @@ int main()
 				{
 					case '1':
 					{
-
+						addNumber(contactsBook, &numberOfContacts);
 
 						break;
 					}
