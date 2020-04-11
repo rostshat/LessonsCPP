@@ -1,23 +1,2 @@
 ﻿  Source.cpp
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(39,6): error C2248: 'Fraction::numerator': cannot access private member declared in class 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(4): message : see declaration of 'Fraction::numerator'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(3): message : see declaration of 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(39,25): error C2248: 'Fraction::numerator': cannot access private member declared in class 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(4): message : see declaration of 'Fraction::numerator'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(3): message : see declaration of 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(39,44): error C2248: 'Fraction::numerator': cannot access private member declared in class 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(4): message : see declaration of 'Fraction::numerator'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(3): message : see declaration of 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(40,6): error C2248: 'Fraction::denominator': cannot access private member declared in class 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(5): message : see declaration of 'Fraction::denominator'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(3): message : see declaration of 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(40,27): error C2248: 'Fraction::denominator': cannot access private member declared in class 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(5): message : see declaration of 'Fraction::denominator'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(3): message : see declaration of 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(40,48): error C2248: 'Fraction::denominator': cannot access private member declared in class 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(5): message : see declaration of 'Fraction::denominator'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(3): message : see declaration of 'Fraction'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(50,54): error C2593: 'operator +' is ambiguous
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(37,11): message : could be 'Fraction &operator +(const Fraction &,const Fraction &)'
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(7,18): message : or       'Fraction operator +(const Fraction &,const Fraction)' [found using argument-dependent lookup]
-R:\CPP\ITStep\LessonsCPP\OOP_homework\OOP_homework\Source.cpp(50,54): message : while trying to match the argument list '(Fraction, Fraction)'
+  OOP_homework.vcxproj -> R:\CPP\ITStep\LessonsCPP\OOP_homework\Debug\OOP_homework.exe

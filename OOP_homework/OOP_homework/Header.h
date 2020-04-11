@@ -12,6 +12,6 @@
 
 using namespace std;
 
-
+#define WRAP printf_s("\n");
 
 #endif
